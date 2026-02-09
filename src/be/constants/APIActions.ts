@@ -1,0 +1,10 @@
+export const API_ACTIONS = {
+  SHOW_LO5: "SHOW_LO5",
+  RETURN_LO5: "RETURN_LO5",
+  UPDATE_ANSWER: "UPDATE_ANSWER",
+  RETURN_UPDATE_ANSWER: "RETURN_UPDATE_ANSWER",
+  FINISH: "FINISH",
+  INIT: "INIT"
+} as const;
+
+export type APIActionType = typeof API_ACTIONS[keyof typeof API_ACTIONS];

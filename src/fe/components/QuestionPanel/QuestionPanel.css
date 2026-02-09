@@ -1,0 +1,113 @@
+.question-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.question-container {
+  position: relative;
+  width: 120%;
+  margin-left: -10%;
+  margin-right: -10%;
+  display: block;
+  border-style: solid;
+  border-color: transparent;
+  border-image-slice: 325 255 255 255 fill;
+  border-image-width: 25cqw 23cqw 23cqw 23cqw;
+  border-image-repeat: stretch;
+  aspect-ratio: 2.55 / 1;
+  box-sizing: border-box;
+  padding-top: 0;
+}
+
+.question-text {
+  position: absolute;
+  top: 31%;
+  bottom: 10%;
+  left: 5%;
+  right: 5%;
+  z-index: 2;
+  font-size: 2.5cqw;
+  font-weight: 600;
+  color: #000000;
+  text-align: justify;
+  text-align-last: left;
+  line-height: 1.4;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  overflow-y: auto;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  padding-right: 2%;
+}
+
+.question-text::-webkit-scrollbar {
+  width: 1cqw;
+  height: 1cqw;
+}
+
+.question-text::-webkit-scrollbar-track {
+  background: rgba(139, 69, 19, 0.1);
+  border-radius: 0.5cqw;
+}
+
+.question-text::-webkit-scrollbar-thumb {
+  background: rgba(139, 69, 19, 0.4);
+  border-radius: 0.5cqw;
+}
+
+.question-text .katex {
+  font-size: 3cqw;
+}
+
+.question-text p {
+  margin: 0;
+}
+
+.question-text img {
+  max-width: 100%;
+  max-height: 30cqw;
+  object-fit: contain;
+  margin: 1cqw auto;
+  display: block;
+}
+
+body.is-mobile .question-section {
+  max-width: 100%;
+  margin-top: -5%;
+}
+
+body.is-mobile .question-container {
+  background-image: url("/src/fe/theme/images/mobile/question-frame.png");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  padding: 0;
+  min-height: 51cqw;
+  width: 100%;
+  margin-left: 0;
+  margin-right: 0;
+  border: none;
+  border-image: none;
+  aspect-ratio: unset;
+  position: relative;
+  display: block;
+}
+
+body.is-mobile .question-text {
+  position: absolute;
+  top: 28%;
+  left: 8%;
+  width: 84%;
+  height: 62%;
+  font-size: 3.2cqw;
+  padding: 0;
+  padding-right: 2%;
+  margin: 0;
+  color: #000000;
+  text-align: justify;
+  text-align-last: left;
+  overflow-y: auto;
+  z-index: 10;
+  box-sizing: border-box;
+}

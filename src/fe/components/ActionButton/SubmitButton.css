@@ -1,0 +1,45 @@
+.submit-btn {
+  margin-top: 1.5cqw;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 1cqw;
+  font-size: 0;
+  line-height: 0;
+  transition: all 0.2s ease;
+  position: relative;
+  z-index: 20;
+}
+
+.submit-btn img {
+  width: 16cqw;
+  height: auto;
+  object-fit: contain;
+}
+
+.submit-btn:hover:not(:disabled) {
+  transform: scale(1.1);
+}
+
+.submit-btn:active:not(:disabled) {
+  transform: scale(0.95);
+}
+
+.submit-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+body.is-mobile .submit-btn {
+  margin-top: 2%;
+  padding: 1cqw;
+  font-size: 0;
+  line-height: 0;
+  background: transparent;
+  border: none;
+}
+
+body.is-mobile .submit-btn img {
+  width: 18cqw;
+  height: auto;
+}
