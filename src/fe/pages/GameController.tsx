@@ -1,10 +1,10 @@
 // KHONG SUA KHI DOI GAME
-import "@/fe/styles/game-layout.css";
+import "./game-layout.css";
 import { useEffect, useRef, useCallback } from "react";
-import { useDevice } from "@/fe/context";
+import { useDevice } from "@/fe/hooks";
 import { useQuizState, useAudioController, QuizAnswer } from "@/be";
 import { GAME_TEXTS } from "@/fe/theme";
-import { resolvePlayerName } from "@/fe/utils";
+import { resolvePlayerName } from "@/fe/hooks";
 import {
   ScoreIndicator,
   QuestionPanel,
@@ -19,7 +19,7 @@ interface GameControllerProps {
 }
 
 const GameController = ({ customQuestions }: GameControllerProps) => {
-  const { assets, uiConfig } = useDevice();
+  const { assets } = useDevice();
   const { playButtonClick, playCorrectAnswer, playWrongAnswer, playFinishGame } = useAudioController();
   const animationResetRef = useRef<(() => void) | null>(null);
 
@@ -128,8 +128,6 @@ const GameController = ({ customQuestions }: GameControllerProps) => {
               score={correctCount}
               totalQuestions={totalQuestions}
               onRestart={onFinish}
-              characterImage={assets.player}
-              continueButton={assets.continueButton}
             />
           ) : (
             <div className="question-section">
@@ -195,8 +193,6 @@ const GameController = ({ customQuestions }: GameControllerProps) => {
             currentResult={currentResult}
             correctCount={correctCount}
             playerName={playerName}
-            assets={assets}
-            uiConfig={uiConfig}
             onResetRef={handleResetRef}
           />
         )}

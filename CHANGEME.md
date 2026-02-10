@@ -33,10 +33,9 @@ Ten file chuan (KHONG doi ten):
 
 ### 2. Asset mapping
 - `src/fe/theme/assets.ts` → Them/bot slot hinh anh khi doi kieu game (vd: game leo nui khong can bot1, bot2)
-- `src/fe/theme/uiConfig.ts` → Kich thuoc, vi tri cac thanh phan UI cho mobile va desktop
 
 ### 3. Animation (khi doi kieu gameplay)
-- `src/fe/components/GameAnimation/GameAnimation.tsx` → Component hien thi animation
+- `src/fe/components/GameAnimation/GameAnimation.tsx` → Component hien thi animation (bao gom config vi tri)
 - `src/fe/components/GameAnimation/GameAnimation.css` → Style animation
 - `src/fe/hooks/useGameAnimation.ts` → Logic di chuyen, toc do animation
 
@@ -68,7 +67,6 @@ src/
 │   │   │   └── score-icon.png                        Icon diem
 │   │   ├── images/desktop/                           SUA - tuong tu mobile
 │   │   ├── assets.ts                                 SUA - map hinh anh, them/bot slot
-│   │   ├── uiConfig.ts                               SUA - vi tri/kich thuoc UI
 │   │   ├── index.ts                                  KHONG SUA
 │   │   ├── gameSettings.ts                           KHONG SUA
 │   │   ├── audio.ts                                  KHONG SUA
@@ -104,29 +102,18 @@ src/
 │   │       ├── ScoreIndicator.css                    KHONG SUA
 │   │       └── index.ts                              KHONG SUA
 │   │
-│   ├── containers/
-│   │   ├── GameController.tsx                        KHONG SUA
-│   │   └── index.ts                                  KHONG SUA
-│   │
-│   ├── context/
-│   │   ├── DeviceContext.tsx                          KHONG SUA
-│   │   └── index.ts                                  KHONG SUA
-│   │
 │   ├── hooks/
 │   │   ├── useGameAnimation.ts                       SUA - logic animation
 │   │   ├── useDeviceDetection.ts                     KHONG SUA
+│   │   ├── DeviceContext.tsx                         KHONG SUA
+│   │   ├── resolvePlayerName.ts                      KHONG SUA
 │   │   └── index.ts                                  KHONG SUA
 │   │
 │   ├── pages/
 │   │   ├── Index.tsx                                 KHONG SUA
+│   │   ├── GameController.tsx                        KHONG SUA
+│   │   ├── game-layout.css                           KHONG SUA
 │   │   └── NotFound.tsx                              KHONG SUA
-│   │
-│   ├── styles/
-│   │   └── game-layout.css                           KHONG SUA
-│   │
-│   └── utils/
-│       ├── resolvePlayerName.ts                      KHONG SUA
-│       └── index.ts                                  KHONG SUA
 │
 └── be/
     ├── index.ts                                      KHONG SUA
@@ -146,13 +133,12 @@ src/
 
 ## Tom tat
 
-**SUA (7 items):**
+**SUA (6 items):**
 - `fe/theme/images/mobile/` - thay hinh, giu nguyen ten file
 - `fe/theme/images/desktop/` - thay hinh, giu nguyen ten file
 - `fe/theme/assets.ts` - map hinh anh, them/bot slot
-- `fe/theme/uiConfig.ts` - vi tri/kich thuoc UI
-- `fe/components/GameAnimation/GameAnimation.tsx` - component animation
+- `fe/components/GameAnimation/GameAnimation.tsx` - component animation + config vi tri
 - `fe/components/GameAnimation/GameAnimation.css` - style animation
 - `fe/hooks/useGameAnimation.ts` - logic animation
 
-**KHONG SUA: Tat ca file con lai (33 files)**
+**KHONG SUA: Tat ca file con lai**

@@ -1,7 +1,7 @@
 // KHONG SUA KHI DOI GAME
-import { GameController } from "@/fe/containers";
+import GameController from "./GameController";
 import { useEffect, useState } from "react";
-import { DeviceProvider } from "@/fe/context";
+import { DeviceProvider } from "@/fe/hooks";
 import { DeviceType } from "@/fe/hooks";
 
 interface IndexProps {

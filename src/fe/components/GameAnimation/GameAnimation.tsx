@@ -1,7 +1,23 @@
 // SUA KHI DOI GAME
 import "./GameAnimation.css";
-import { UIConfigType } from "@/fe/theme/uiConfig";
-import { useGameAnimation } from "@/fe/hooks";
+import { useGameAnimation, useDevice } from "@/fe/hooks";
+
+const ANIMATION_CONFIG = {
+  mobile: {
+    startIconLeft: 0,
+    finishIconLeft: 85,
+    playerLeftOffset: 6,
+    bot1LeftOffset: 3,
+    bot2LeftOffset: 0,
+  },
+  desktop: {
+    startIconLeft: 0,
+    finishIconLeft: 85,
+    playerLeftOffset: 6,
+    bot1LeftOffset: 3,
+    bot2LeftOffset: 0,
+  },
+};
 
 export interface GameAnimationProps {
   totalQuestions: number;
@@ -10,8 +26,6 @@ export interface GameAnimationProps {
   currentResult: any;
   correctCount: number;
   playerName: string;
-  assets: Record<string, string>;
-  uiConfig: UIConfigType;
   onResetRef?: (resetFn: () => void) => void;
 }
 
@@ -22,10 +36,10 @@ const GameAnimation = ({
   currentResult,
   correctCount,
   playerName,
-  assets,
-  uiConfig,
   onResetRef,
 }: GameAnimationProps) => {
+  const { assets, deviceType } = useDevice();
+  const config = ANIMATION_CONFIG[deviceType];
   const {
     playerPosition,
     bot1Position,
@@ -44,11 +58,10 @@ const GameAnimation = ({
     onResetRef(resetPositions);
   }
 
-  const { startIconLeft, finishIconLeft } = uiConfig.animationArea;
-
-  const playerOffset = uiConfig.animationArea.playerLeftOffset ?? 6;
-  const bot1Offset = uiConfig.animationArea.bot1LeftOffset ?? 3;
-  const bot2Offset = uiConfig.animationArea.bot2LeftOffset ?? 0;
+  const { startIconLeft, finishIconLeft } = config;
+  const playerOffset = config.playerLeftOffset;
+  const bot1Offset = config.bot1LeftOffset;
+  const bot2Offset = config.bot2LeftOffset;
 
   const start = startIconLeft + 7.5;
   const end = finishIconLeft;
