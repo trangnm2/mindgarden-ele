@@ -13,6 +13,7 @@ Moi file deu co header o dong dau tien:
 ## Danh sach file SUA KHI DOI GAME
 
 ### 1. Hinh anh - CHI THAY FILE, GIU NGUYEN TEN
+
 - `src/fe/theme/images/mobile/` → Thay hinh mobile
 - `src/fe/theme/images/desktop/` → Thay hinh desktop
 
@@ -30,6 +31,13 @@ Ten file chuan (KHONG doi ten):
 | `start-icon.png` | Icon xuat phat |
 | `finish-icon.png` | Icon dich |
 | `score-icon.png` | Icon diem |
+
+**LUU Y QUAN TRONG:** Ten file hinh **BAT BUOC** giu nguyen vi ngoai `assets.ts`, con co 3 file CSS `KHONG SUA` reference truc tiep theo path:
+- `src/index.css` dong 31 → `background.png` (desktop)
+- `src/fe/pages/game-layout.css` dong 100 → `background.png` (mobile)
+- `src/fe/components/QuestionPanel/QuestionPanel.css` dong 83 → `question-frame.png` (mobile)
+
+Doi ten file hinh se lam vo 3 file CSS nay.
 
 ### 2. Asset mapping
 - `src/fe/theme/assets.ts` → Them/bot slot hinh anh khi doi kieu game (vd: game leo nui khong can bot1, bot2)
@@ -142,3 +150,16 @@ src/
 - `fe/hooks/useGameAnimation.ts` - logic animation
 
 **KHONG SUA: Tat ca file con lai**
+
+---
+
+## Step-by-step: Tao game moi tu template
+
+1. Copy toan bo folder `sample_game` → dat ten moi (vd: `newgame_lovable`)
+2. Thay hinh trong `src/fe/theme/images/mobile/` - giu nguyen ten file, chi thay noi dung
+3. Thay hinh trong `src/fe/theme/images/desktop/` - tuong tu
+4. Sua `src/fe/theme/assets.ts` neu game moi can them/bot slot hinh (vd: game khong co bot thi xoa bot1, bot2)
+5. Sua `src/fe/components/GameAnimation/GameAnimation.tsx` - thay doi layout animation, vi tri nhan vat
+6. Sua `src/fe/components/GameAnimation/GameAnimation.css` - thay doi style animation
+7. Sua `src/fe/hooks/useGameAnimation.ts` - thay doi logic di chuyen, toc do
+8. Chay `npm install` va `npm run dev` de test
