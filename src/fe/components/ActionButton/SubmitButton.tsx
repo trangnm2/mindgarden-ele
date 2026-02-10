@@ -1,3 +1,4 @@
+// KHONG SUA KHI DOI GAME
 import "./SubmitButton.css";
 import { GAME_TEXTS } from "@/fe/theme";
 

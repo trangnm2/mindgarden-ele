@@ -1,112 +1,158 @@
 # Huong dan tao game moi tu template
 
-## Quan trong: Chi can sua folder `src/fe/theme/`
+## Quan trong: Doc header dong dau cua moi file
 
-Khi doi game theme, **tat ca cau hinh, hinh anh, am thanh, mau sac, text** deu nam trong folder `src/fe/theme/`.
-Noi AI: "Doc folder src/fe/theme/ va doi thanh [ten game moi]" la du.
+Moi file deu co header o dong dau tien:
+- `// SUA KHI DOI GAME` hoac `/* SUA KHI DOI GAME */` → File CAN sua khi doi game
+- `// KHONG SUA KHI DOI GAME` hoac `/* KHONG SUA KHI DOI GAME */` → File KHONG duoc sua
 
-## Cac file trong `src/fe/theme/`
+**Neu thay header `KHONG SUA`, KHONG DUOC SUA file do.**
 
-| File/Folder | Chuc nang | Vi du |
-|---|---|---|
-| `images/mobile/` | Hinh anh mobile | Background, mascot, buttons |
-| `images/desktop/` | Hinh anh desktop | Background, mascot, buttons |
-| `assets.ts` | Map hinh anh vao config | Import tu ./images/ |
-| `uiConfig.ts` | Kich thuoc, vi tri cac thanh phan UI | Score display, question box, race track |
-| `gameTexts.ts` | Text hien thi trong game | "Dang tai...", "VE DICH!", "Tra loi" |
-| `audio.ts` | URL am thanh | Click, correct, wrong, finish |
-| `gameSettings.ts` | Cai dat game | So cau hoi, API endpoint |
-| `colors.css` | Mau sac chu dao (CSS variables) | Primary, accent, answer colors |
-| `mockQuestions.ts` | Cau hoi mau cho sample mode | 5 cau hoi demo |
+---
 
-## Checklist khi doi game
+## Danh sach file SUA KHI DOI GAME
 
-### 1. Hinh anh
-- **Folder:** `src/fe/theme/images/mobile/` va `src/fe/theme/images/desktop/`
-- Thay hinh anh truc tiep, giu nguyen ten file
-- Neu doi ten file, cap nhat `src/fe/theme/assets.ts`
+### 1. Hinh anh - CHI THAY FILE, GIU NGUYEN TEN
+- `src/fe/theme/images/mobile/` → Thay hinh mobile
+- `src/fe/theme/images/desktop/` → Thay hinh desktop
+
+Ten file chuan (KHONG doi ten):
+| Ten file | Vai tro |
+|---|---|
+| `background.png` | Hinh nen game |
+| `player.png` | Nhan vat nguoi choi |
+| `bot1.png` | Bot 1 |
+| `bot2.png` | Bot 2 |
+| `question-frame.png` | Khung cau hoi |
+| `answer-button.png` | Nut tra loi |
+| `submit-button.png` | Nut gui dap an |
+| `continue-button.png` | Nut tiep tuc |
+| `start-icon.png` | Icon xuat phat |
+| `finish-icon.png` | Icon dich |
+| `score-icon.png` | Icon diem |
 
 ### 2. Asset mapping
-- **File:** `src/fe/theme/assets.ts`
-- Chi can sua neu doi ten file hinh anh
+- `src/fe/theme/assets.ts` → Them/bot slot hinh anh khi doi kieu game (vd: game leo nui khong can bot1, bot2)
+- `src/fe/theme/uiConfig.ts` → Kich thuoc, vi tri cac thanh phan UI cho mobile va desktop
 
-### 3. UI Config
-- **File:** `src/fe/theme/uiConfig.ts`
-- Dieu chinh kich thuoc, vi tri cac thanh phan UI cho mobile va desktop
+### 3. Animation (khi doi kieu gameplay)
+- `src/fe/components/GameAnimation/GameAnimation.tsx` → Component hien thi animation
+- `src/fe/components/GameAnimation/GameAnimation.css` → Style animation
+- `src/fe/hooks/useGameAnimation.ts` → Logic di chuyen, toc do animation
 
-### 4. Text hien thi
-- **File:** `src/fe/theme/gameTexts.ts`
-- Doi text loading, ket qua, nut bam, ten player mac dinh
+---
 
-### 5. Am thanh
-- **File:** `src/fe/theme/audio.ts`
-- Thay URL am thanh: click, correct, wrong, finish
-
-### 6. Cai dat game
-- **File:** `src/fe/theme/gameSettings.ts`
-- Doi so cau hoi, API endpoint, bat/tat sample mode
-
-### 7. Mau sac
-- **File:** `src/fe/theme/colors.css`
-- Doi CSS variables de thay doi mau sac toan bo game
-
-### 8. Cau hoi mau
-- **File:** `src/fe/theme/mockQuestions.ts`
-- Doi cau hoi demo khi chay sample mode
-
-### 9. CSS theo component (tuy chon, khi can tinh chinh sau)
-- `src/fe/components/ScoreIndicator/ScoreIndicator.css`
-- `src/fe/components/QuestionPanel/QuestionPanel.css`
-- `src/fe/components/AnswerOptionList/AnswerOptionItem.css`
-- `src/fe/components/ActionButton/SubmitButton.css`
-- `src/fe/components/GameAnimation/GameAnimation.css`
-- `src/fe/components/GameResultScreen/GameResultScreen.css`
-- `src/fe/styles/game-layout.css`
-
-### 10. Animation logic (neu game khac kieu dua)
-- **File:** `src/fe/hooks/useRaceAnimation.ts`
-- Thay doi logic di chuyen bot, hoac tao hook moi
-
-## Cau truc thu muc
+## Cau truc thu muc day du
 
 ```
 src/
-├── fe/                           Toan bo frontend
-│   ├── theme/                    << CHI CAN SUA O DAY KHI DOI GAME >>
-│   │   ├── images/
-│   │   │   ├── mobile/           Hinh anh mobile
-│   │   │   └── desktop/          Hinh anh desktop
-│   │   ├── assets.ts             Map hinh anh
-│   │   ├── uiConfig.ts           Kich thuoc/vi tri UI
-│   │   ├── gameTexts.ts          Text hien thi
-│   │   ├── audio.ts              Am thanh
-│   │   ├── gameSettings.ts       Cai dat game
-│   │   ├── colors.css            Mau sac CSS
-│   │   ├── mockQuestions.ts      Cau hoi mau
-│   │   └── index.ts              Barrel export
-│   ├── components/               UI components (moi cai co CSS rieng)
-│   ├── containers/               GameController (flow chinh)
-│   ├── context/                  DeviceContext (mobile/desktop)
-│   ├── hooks/                    useRaceAnimation, useDeviceDetection
-│   ├── styles/                   game-layout.css
-│   └── utils/                    resolvePlayerName
-├── be/                           Logic layer (KHONG SUA khi doi game)
-│   ├── constants/                API action types
-│   ├── hooks/                    useQuizAPI, useQuizState, useAudioController
-│   └── types/                    TypeScript interfaces
-├── pages/                        Routing (KHONG SUA)
-├── App.tsx                       Router setup (KHONG SUA)
-├── main.tsx                      Entry point (KHONG SUA)
-└── index.css                     Base styles (KHONG SUA)
+├── App.tsx                                           KHONG SUA
+├── main.tsx                                          KHONG SUA
+├── index.css                                         KHONG SUA
+│
+├── fe/
+│   ├── index.ts                                      KHONG SUA
+│   │
+│   ├── theme/
+│   │   ├── images/mobile/                            SUA - thay hinh, giu ten file
+│   │   │   ├── background.png                        Hinh nen
+│   │   │   ├── player.png                            Nhan vat nguoi choi
+│   │   │   ├── bot1.png                              Bot 1
+│   │   │   ├── bot2.png                              Bot 2
+│   │   │   ├── question-frame.png                    Khung cau hoi
+│   │   │   ├── answer-button.png                     Nut tra loi
+│   │   │   ├── submit-button.png                     Nut gui
+│   │   │   ├── continue-button.png                   Nut tiep tuc
+│   │   │   ├── start-icon.png                        Icon xuat phat
+│   │   │   ├── finish-icon.png                       Icon dich
+│   │   │   └── score-icon.png                        Icon diem
+│   │   ├── images/desktop/                           SUA - tuong tu mobile
+│   │   ├── assets.ts                                 SUA - map hinh anh, them/bot slot
+│   │   ├── uiConfig.ts                               SUA - vi tri/kich thuoc UI
+│   │   ├── index.ts                                  KHONG SUA
+│   │   ├── gameSettings.ts                           KHONG SUA
+│   │   ├── audio.ts                                  KHONG SUA
+│   │   └── mockQuestions.ts                          KHONG SUA
+│   │
+│   ├── components/
+│   │   ├── index.ts                                  KHONG SUA
+│   │   ├── ContentRenderer/
+│   │   │   ├── HtmlContentRenderer.tsx               KHONG SUA
+│   │   │   └── index.ts                              KHONG SUA
+│   │   ├── GameAnimation/
+│   │   │   ├── GameAnimation.tsx                     SUA - component animation
+│   │   │   ├── GameAnimation.css                     SUA - style animation
+│   │   │   └── index.ts                              KHONG SUA
+│   │   ├── ActionButton/
+│   │   │   ├── SubmitButton.tsx                      KHONG SUA
+│   │   │   ├── SubmitButton.css                      KHONG SUA
+│   │   │   └── index.ts                              KHONG SUA
+│   │   ├── AnswerOptionList/
+│   │   │   ├── AnswerOptionItem.tsx                  KHONG SUA
+│   │   │   ├── AnswerOptionItem.css                  KHONG SUA
+│   │   │   └── index.ts                              KHONG SUA
+│   │   ├── GameResultScreen/
+│   │   │   ├── GameResultScreen.tsx                  KHONG SUA
+│   │   │   ├── GameResultScreen.css                  KHONG SUA
+│   │   │   └── index.ts                              KHONG SUA
+│   │   ├── QuestionPanel/
+│   │   │   ├── QuestionPanel.tsx                     KHONG SUA
+│   │   │   ├── QuestionPanel.css                     KHONG SUA
+│   │   │   └── index.ts                              KHONG SUA
+│   │   └── ScoreIndicator/
+│   │       ├── ScoreIndicator.tsx                    KHONG SUA
+│   │       ├── ScoreIndicator.css                    KHONG SUA
+│   │       └── index.ts                              KHONG SUA
+│   │
+│   ├── containers/
+│   │   ├── GameController.tsx                        KHONG SUA
+│   │   └── index.ts                                  KHONG SUA
+│   │
+│   ├── context/
+│   │   ├── DeviceContext.tsx                          KHONG SUA
+│   │   └── index.ts                                  KHONG SUA
+│   │
+│   ├── hooks/
+│   │   ├── useGameAnimation.ts                       SUA - logic animation
+│   │   ├── useDeviceDetection.ts                     KHONG SUA
+│   │   └── index.ts                                  KHONG SUA
+│   │
+│   ├── pages/
+│   │   ├── Index.tsx                                 KHONG SUA
+│   │   └── NotFound.tsx                              KHONG SUA
+│   │
+│   ├── styles/
+│   │   └── game-layout.css                           KHONG SUA
+│   │
+│   └── utils/
+│       ├── resolvePlayerName.ts                      KHONG SUA
+│       └── index.ts                                  KHONG SUA
+│
+└── be/
+    ├── index.ts                                      KHONG SUA
+    ├── constants/
+    │   ├── APIActions.ts                             KHONG SUA
+    │   └── index.ts                                  KHONG SUA
+    ├── hooks/
+    │   ├── useQuizAPI.ts                             KHONG SUA
+    │   ├── useQuizState.ts                           KHONG SUA
+    │   ├── useAudioController.ts                     KHONG SUA
+    │   └── index.ts                                  KHONG SUA
+    └── types/
+        ├── Quiz.ts                                   KHONG SUA
+        ├── API.ts                                    KHONG SUA
+        └── index.ts                                  KHONG SUA
 ```
 
-## KHONG can sua khi doi game
-- `src/be/` - Logic quiz API, state management, audio controller
-- `src/fe/components/` - Chi sua CSS neu can tinh chinh giao dien
-- `src/fe/containers/` - GameController flow
-- `src/fe/context/` - DeviceContext
-- `src/fe/hooks/` - Chi sua neu doi kieu animation
-- `src/pages/` - Routing
-- `src/App.tsx` - Router
-- `src/main.tsx` - Entry point
-- `src/index.css` - Base styles (mau sac da tach vao theme/colors.css)
+## Tom tat
+
+**SUA (7 items):**
+- `fe/theme/images/mobile/` - thay hinh, giu nguyen ten file
+- `fe/theme/images/desktop/` - thay hinh, giu nguyen ten file
+- `fe/theme/assets.ts` - map hinh anh, them/bot slot
+- `fe/theme/uiConfig.ts` - vi tri/kich thuoc UI
+- `fe/components/GameAnimation/GameAnimation.tsx` - component animation
+- `fe/components/GameAnimation/GameAnimation.css` - style animation
+- `fe/hooks/useGameAnimation.ts` - logic animation
+
+**KHONG SUA: Tat ca file con lai (33 files)**

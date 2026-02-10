@@ -1,3 +1,4 @@
+// KHONG SUA KHI DOI GAME
 export const AUDIO_URLS = {
   buttonClick: "https://r73troypb4obj.vcdn.cloud/audio/20260110174628.mp3",
   wrongAnswer: "https://r73troypb4obj.vcdn.cloud/audio/20260110174416.mp3",

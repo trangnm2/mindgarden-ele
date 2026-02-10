@@ -1,3 +1,4 @@
+// KHONG SUA KHI DOI GAME
 export interface QuizAnswer {
   id: number;
   content: string;

@@ -1,3 +1,4 @@
+// KHONG SUA KHI DOI GAME
 import { GameController } from "@/fe/containers";
 import { useEffect, useState } from "react";
 import { DeviceProvider } from "@/fe/context";

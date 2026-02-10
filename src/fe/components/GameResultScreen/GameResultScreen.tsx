@@ -1,3 +1,4 @@
+// KHONG SUA KHI DOI GAME
 import "./GameResultScreen.css";
 import { GAME_TEXTS } from "@/fe/theme";
 
@@ -5,19 +6,19 @@ interface GameResultScreenProps {
   score: number;
   totalQuestions: number;
   onRestart: () => void;
-  mascotImage: string;
+  characterImage: string;
   continueButton: string;
 }
 
-const GameResultScreen = ({ score, totalQuestions, onRestart, mascotImage, continueButton }: GameResultScreenProps) => {
+const GameResultScreen = ({ score, totalQuestions, onRestart, characterImage, continueButton }: GameResultScreenProps) => {
   const isWinner = score >= totalQuestions;
 
   return (
     <div className="game-overlay">
       <div className="overlay-content">
         <img
-          src={mascotImage}
-          alt="Mascot"
+          src={characterImage}
+          alt="Character"
           className={`mx-auto ${isWinner ? "celebrating" : ""}`}
           style={{ width: '40cqw', marginBottom: '2cqw' }}
         />

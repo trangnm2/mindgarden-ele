@@ -1,6 +1,7 @@
+// SUA KHI DOI GAME
 import { useEffect, useRef, useState } from "react";
 
-interface UseRaceAnimationOptions {
+interface UseGameAnimationOptions {
   totalQuestions: number;
   currentQuestionIndex: number;
   hasSubmitted: boolean;
@@ -8,13 +9,13 @@ interface UseRaceAnimationOptions {
   correctCount: number;
 }
 
-export const useRaceAnimation = ({
+export const useGameAnimation = ({
   totalQuestions,
   currentQuestionIndex,
   hasSubmitted,
   currentResult,
   correctCount
-}: UseRaceAnimationOptions) => {
+}: UseGameAnimationOptions) => {
   const [bot1Position, setBot1Position] = useState(0);
   const [bot2Position, setBot2Position] = useState(0);
   const bot1PositionRef = useRef(bot1Position);

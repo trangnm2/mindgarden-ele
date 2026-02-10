@@ -1,3 +1,4 @@
+// KHONG SUA KHI DOI GAME
 import { useState, useEffect } from 'react';
 
 export type DeviceType = 'mobile' | 'desktop';

@@ -1,3 +1,4 @@
+// KHONG SUA KHI DOI GAME
 import React, { createContext, useContext, ReactNode, useEffect } from 'react';
 import { useDeviceDetection, DeviceType } from '@/fe/hooks';
 import { getAssets, AssetSet, getUIConfig, UIConfigType } from '@/fe/theme';

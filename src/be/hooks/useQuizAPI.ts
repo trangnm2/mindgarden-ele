@@ -1,3 +1,4 @@
+// KHONG SUA KHI DOI GAME
 import { useCallback, useEffect, useRef, useState } from "react";
 import { API_ACTIONS } from "@/be/constants";
 import { UseQuizAPIOptions, AnswerOption } from "@/be/types";

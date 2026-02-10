@@ -1,3 +1,4 @@
+// KHONG SUA KHI DOI GAME
 import "./ScoreIndicator.css";
 
 interface ScoreIndicatorProps {

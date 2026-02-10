@@ -1,41 +1,57 @@
+// SUA KHI DOI GAME
 import "./GameAnimation.css";
 import { UIConfigType } from "@/fe/theme/uiConfig";
+import { useGameAnimation } from "@/fe/hooks";
 
-interface GameAnimationProps {
-  playerPosition: number;
-  bot1Position: number;
-  bot2Position: number;
-  isJumping: { player: boolean; bot1: boolean; bot2: boolean };
+export interface GameAnimationProps {
+  totalQuestions: number;
+  currentQuestionIndex: number;
+  hasSubmitted: boolean;
+  currentResult: any;
+  correctCount: number;
   playerName: string;
-  mascotRed: string;
-  mascotGreen: string;
-  mascotBlue: string;
-  startLine: string;
-  finishLine: string;
+  assets: Record<string, string>;
   uiConfig: UIConfigType;
+  onResetRef?: (resetFn: () => void) => void;
 }
 
-const GameAnimation = ({ 
-  playerPosition, 
-  bot1Position, 
-  bot2Position, 
-  isJumping,
+const GameAnimation = ({
+  totalQuestions,
+  currentQuestionIndex,
+  hasSubmitted,
+  currentResult,
+  correctCount,
   playerName,
-  mascotRed,
-  mascotGreen,
-  mascotBlue,
-  startLine: startLineImg,
-  finishLine: finishLineImg,
-  uiConfig
+  assets,
+  uiConfig,
+  onResetRef,
 }: GameAnimationProps) => {
-  const { startLineLeft, finishLineLeft } = uiConfig.raceTrack;
+  const {
+    playerPosition,
+    bot1Position,
+    bot2Position,
+    isJumping,
+    resetPositions,
+  } = useGameAnimation({
+    totalQuestions,
+    currentQuestionIndex,
+    hasSubmitted,
+    currentResult,
+    correctCount,
+  });
 
-  const playerOffset = uiConfig.raceTrack.playerLeftOffset ?? 6;
-  const bot1Offset = uiConfig.raceTrack.bot1LeftOffset ?? 3;
-  const bot2Offset = uiConfig.raceTrack.bot2LeftOffset ?? 0;
+  if (onResetRef) {
+    onResetRef(resetPositions);
+  }
 
-  const start = startLineLeft + 7.5;
-  const end = finishLineLeft;
+  const { startIconLeft, finishIconLeft } = uiConfig.animationArea;
+
+  const playerOffset = uiConfig.animationArea.playerLeftOffset ?? 6;
+  const bot1Offset = uiConfig.animationArea.bot1LeftOffset ?? 3;
+  const bot2Offset = uiConfig.animationArea.bot2LeftOffset ?? 0;
+
+  const start = startIconLeft + 7.5;
+  const end = finishIconLeft;
   const step = (end - start) / 5;
   const maxOffset = Math.max(playerOffset, bot1Offset, bot2Offset);
 
@@ -50,20 +66,20 @@ const GameAnimation = ({
   };
 
   return (
-    <div className="race-section">
-      <div className="race-track">
+    <div className="animation-section">
+      <div className="animation-track">
         <div 
           className="absolute bottom-0 z-10 opacity-80 w-[8%] translate-x-[50%]" 
-          style={{ left: `${startLineLeft + 10}%` }}
+          style={{ left: `${startIconLeft + 10}%` }}
         >
-           <img src={startLineImg} alt="Start" className="w-full h-auto" />
+           <img src={assets.startIcon} alt="Start" className="w-full h-auto" />
         </div>
 
         <div 
           className="absolute bottom-0 z-10 w-[7%] -translate-x-[50%]" 
-          style={{ left: `${finishLineLeft}%` }}
+          style={{ left: `${finishIconLeft}%` }}
         >
-           <img src={finishLineImg} alt="Finish" className="w-full h-auto" />
+           <img src={assets.finishIcon} alt="Finish" className="w-full h-auto" />
         </div>
 
         <div
@@ -74,7 +90,7 @@ const GameAnimation = ({
           }}
         >
           <span className="player-name" id="playerName">{playerName}</span>
-          <img src={mascotRed} alt="Player" />
+          <img src={assets.player} alt="Player" />
         </div>
 
         <div
@@ -84,7 +100,7 @@ const GameAnimation = ({
             zIndex: 102
           }}
         >
-          <img src={mascotGreen} alt="Bot 1" />
+          <img src={assets.bot1} alt="Bot 1" />
         </div>
 
         <div
@@ -94,7 +110,7 @@ const GameAnimation = ({
             zIndex: 103
           }}
         >
-          <img src={mascotBlue} alt="Bot 2" />
+          <img src={assets.bot2} alt="Bot 2" />
         </div>
       </div>
     </div>

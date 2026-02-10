@@ -1,3 +1,4 @@
+// KHONG SUA KHI DOI GAME
 import { GAME_TEXTS } from "@/fe/theme";
 
 export const resolvePlayerName = (username?: string): string => {

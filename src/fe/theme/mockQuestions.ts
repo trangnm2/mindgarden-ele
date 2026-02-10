@@ -1,3 +1,4 @@
+// KHONG SUA KHI DOI GAME
 import { Question } from "@/be/types";
 
 export const sampleQuestions: Question[] = [

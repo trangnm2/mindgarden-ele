@@ -1,3 +1,4 @@
+// KHONG SUA KHI DOI GAME
 import { useState, useCallback, useMemo, useEffect } from "react";
 import { useQuizAPI } from "./useQuizAPI";
 import { sampleQuestions } from "@/fe/theme/mockQuestions";

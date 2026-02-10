@@ -1,3 +1,4 @@
+// SUA KHI DOI GAME
 export const UI_CONFIG_MOBILE = {
   scoreDisplay: {
     scale: 1.0,
@@ -86,14 +87,14 @@ export const UI_CONFIG_MOBILE = {
     transitionDuration: 200,
   },
 
-  raceTrack: {
+  animationArea: {
     scale: 1.0,
     trackBottomOffset: 10,
     trackHeight: 180,
-    startLineLeft: 0,
-    finishLineLeft: 85,
-    startLineWidth: 60,
-    finishLineWidth: 50,
+    startIconLeft: 0,
+    finishIconLeft: 85,
+    startIconWidth: 60,
+    finishIconWidth: 50,
     playerBottom: 60,
     bot1Bottom: 30,
     bot2Bottom: 0,
@@ -102,7 +103,7 @@ export const UI_CONFIG_MOBILE = {
     bot2LeftOffset: 0,
   },
 
-  mascots: {
+  characters: {
     scale: 1.0,
     playerWidth: 75,
     bot1Width: 75,
@@ -125,8 +126,8 @@ export const UI_CONFIG_MOBILE = {
     cardMarginX: 16,
     cardBorderRadius: 24,
     cardBorderWidth: 4,
-    mascotWidth: 128,
-    mascotMarginBottom: 16,
+    characterWidth: 128,
+    characterMarginBottom: 16,
     titleFontSize: 30,
     titleMarginBottom: 16,
     scoreFontSize: 36,
@@ -228,14 +229,14 @@ export const UI_CONFIG_PC = {
     transitionDuration: 200,
   },
 
-  raceTrack: {
+  animationArea: {
     scale: 1.2,
     trackBottomOffset: 15,
     trackHeight: 220,
-    startLineLeft: 0,
-    finishLineLeft: 85,
-    startLineWidth: 80,
-    finishLineWidth: 70,
+    startIconLeft: 0,
+    finishIconLeft: 85,
+    startIconWidth: 80,
+    finishIconWidth: 70,
     playerBottom: 80,
     bot1Bottom: 40,
     bot2Bottom: 0,
@@ -244,7 +245,7 @@ export const UI_CONFIG_PC = {
     bot2LeftOffset: 0,
   },
 
-  mascots: {
+  characters: {
     scale: 1.2,
     playerWidth: 95,
     bot1Width: 95,
@@ -267,8 +268,8 @@ export const UI_CONFIG_PC = {
     cardMarginX: 24,
     cardBorderRadius: 32,
     cardBorderWidth: 4,
-    mascotWidth: 160,
-    mascotMarginBottom: 24,
+    characterWidth: 160,
+    characterMarginBottom: 24,
     titleFontSize: 40,
     titleMarginBottom: 24,
     scoreFontSize: 48,

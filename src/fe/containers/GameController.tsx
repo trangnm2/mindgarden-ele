@@ -1,8 +1,8 @@
+// KHONG SUA KHI DOI GAME
 import "@/fe/styles/game-layout.css";
-import { useEffect } from "react";
+import { useEffect, useRef, useCallback } from "react";
 import { useDevice } from "@/fe/context";
 import { useQuizState, useAudioController, QuizAnswer } from "@/be";
-import { useRaceAnimation } from "@/fe/hooks";
 import { GAME_TEXTS } from "@/fe/theme";
 import { resolvePlayerName } from "@/fe/utils";
 import {
@@ -21,6 +21,7 @@ interface GameControllerProps {
 const GameController = ({ customQuestions }: GameControllerProps) => {
   const { assets, uiConfig } = useDevice();
   const { playButtonClick, playCorrectAnswer, playWrongAnswer, playFinishGame } = useAudioController();
+  const animationResetRef = useRef<(() => void) | null>(null);
 
   const {
     quiz,
@@ -50,20 +51,6 @@ const GameController = ({ customQuestions }: GameControllerProps) => {
     customQuestions
   });
 
-  const {
-    playerPosition,
-    bot1Position,
-    bot2Position,
-    isJumping,
-    resetPositions,
-  } = useRaceAnimation({
-    totalQuestions,
-    currentQuestionIndex,
-    hasSubmitted,
-    currentResult,
-    correctCount,
-  });
-
   useEffect(() => {
     if (isCompleted) {
       playFinishGame();
@@ -90,12 +77,16 @@ const GameController = ({ customQuestions }: GameControllerProps) => {
   const onFinish = () => {
     playButtonClick();
     if (isSampleMode) {
-      resetPositions();
+      animationResetRef.current?.();
       restart();
       return;
     }
     finish();
   };
+
+  const handleResetRef = useCallback((resetFn: () => void) => {
+    animationResetRef.current = resetFn;
+  }, []);
 
   if (!quiz) {
     return (
@@ -103,7 +94,7 @@ const GameController = ({ customQuestions }: GameControllerProps) => {
         className="h-screen w-full bg-cover bg-center bg-no-repeat flex items-center justify-center"
         style={{ backgroundImage: `url(${assets.background})` }}
       >
-        <div className="text-foreground font-roboto text-xl">{GAME_TEXTS.loading}</div>
+        <div className="font-roboto text-xl" style={{ color: "#4a3520" }}>{GAME_TEXTS.loading}</div>
       </div>
     );
   }
@@ -123,7 +114,7 @@ const GameController = ({ customQuestions }: GameControllerProps) => {
               total={totalQuestions}
               currentIndex={currentQuestionIndex}
               answerResults={answers}
-              indicatorImage={assets.banhChung}
+              indicatorImage={assets.scoreIcon}
             />
           </header>
         )}
@@ -137,7 +128,7 @@ const GameController = ({ customQuestions }: GameControllerProps) => {
               score={correctCount}
               totalQuestions={totalQuestions}
               onRestart={onFinish}
-              mascotImage={assets.mascotRed}
+              characterImage={assets.player}
               continueButton={assets.continueButton}
             />
           ) : (
@@ -188,8 +179,8 @@ const GameController = ({ customQuestions }: GameControllerProps) => {
                 />
               </div>
               {hasSubmitted && currentResult?.explanation && (
-                <div className="mt-[1cqw] px-[1cqw] py-[0.5cqw] bg-background/80 rounded-[1cqw] text-center">
-                  <p className="text-[1.5cqw] text-foreground/70">{currentResult.explanation}</p>
+                <div className="mt-[1cqw] px-[1cqw] py-[0.5cqw] rounded-[1cqw] text-center" style={{ background: "rgba(255,255,255,0.8)" }}>
+                  <p className="text-[1.5cqw]" style={{ color: "rgba(74,53,32,0.7)" }}>{currentResult.explanation}</p>
                 </div>
               )}
             </div>
@@ -198,17 +189,15 @@ const GameController = ({ customQuestions }: GameControllerProps) => {
         
         {!isCompleted && (
           <GameAnimation
-            playerPosition={playerPosition}
-            bot1Position={bot1Position}
-            bot2Position={bot2Position}
-            isJumping={isJumping}
+            totalQuestions={totalQuestions}
+            currentQuestionIndex={currentQuestionIndex}
+            hasSubmitted={hasSubmitted}
+            currentResult={currentResult}
+            correctCount={correctCount}
             playerName={playerName}
-            mascotRed={assets.mascotRed}
-            mascotGreen={assets.mascotGreen}
-            mascotBlue={assets.mascotBlue}
-            startLine={assets.startLine}
-            finishLine={assets.finishLine}
+            assets={assets}
             uiConfig={uiConfig}
+            onResetRef={handleResetRef}
           />
         )}
       </div>

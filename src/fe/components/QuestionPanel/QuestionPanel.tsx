@@ -1,5 +1,6 @@
+// KHONG SUA KHI DOI GAME
 import "./QuestionPanel.css";
-import HtmlContentRenderer from "@/fe/components/HtmlContentRenderer";
+import HtmlContentRenderer from "@/fe/components/ContentRenderer/HtmlContentRenderer";
 
 interface QuestionPanelProps {
   question: string;
