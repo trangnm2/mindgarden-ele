@@ -27,6 +27,7 @@ const SubmitButton = ({
       <img
         src={isAnswered ? continueButtonImage : submitButtonImage}
         alt={isAnswered ? GAME_TEXTS.buttons.continue : GAME_TEXTS.buttons.submit}
+        className="submit-btn-img"
       />
     </button>
   );

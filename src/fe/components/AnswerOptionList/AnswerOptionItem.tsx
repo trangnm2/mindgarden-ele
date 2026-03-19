@@ -49,9 +49,9 @@ const AnswerOptionItem = ({
       className={getContainerClass()}
       style={{ pointerEvents: isDisabled ? 'none' : 'auto' }}
     >
-      <div className="answer-label">
+      <span className="answer-label">
         {labels[index] ?? index + 1}
-      </div>
+      </span>
       <div className="answer-text">
         <HtmlContentRenderer html={answer} />
       </div>

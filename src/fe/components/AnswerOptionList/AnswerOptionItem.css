@@ -138,8 +138,6 @@ body.is-mobile .answers-grid {
   gap: calc(0.5 * var(--qu));
   width: 100%;
   margin-top: -2%;
-  margin-left: 0;
-  margin-right: 0;
   padding: 0 6%;
   flex: 4;
   min-height: 0;
