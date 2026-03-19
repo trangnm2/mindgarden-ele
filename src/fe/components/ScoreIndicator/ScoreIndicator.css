@@ -12,15 +12,12 @@
   filter: grayscale(70%) brightness(0.5);
   transform: scale(0.9);
   opacity: 0.5;
-  overflow: visible;
 }
 
 .score-item img {
   width: 100%;
   height: auto;
   display: block;
-  transform: scaleY(2.02);
-  transform-origin: center top;
 }
 
 .score-item.active {
