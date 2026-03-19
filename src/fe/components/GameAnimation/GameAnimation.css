@@ -35,21 +35,17 @@
   top: -50%;
   transform: translateY(-50%);
   width: 10cqw;
-  height: 8.3cqw;
+  height: auto;
   transition: left 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   z-index: 5;
   animation: playerRocking 2s ease-in-out infinite;
   container-type: inline-size;
-  overflow: visible;
 }
 
 .player img {
   width: 100%;
-  height: 100%;
+  height: auto;
   display: block;
-  object-fit: contain;
-  transform: scaleX(1.22) scaleY(1.08);
-  transform-origin: left center;
 }
 
 @keyframes playerRocking {
@@ -181,37 +177,34 @@ body.is-mobile .player {
   top: 25%;
   transform: translateY(-25%);
   width: calc(16 * var(--ru));
-  height: calc(13.25 * var(--ru));
+  height: auto;
   transition: left 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   z-index: 5;
 }
 
 body.is-mobile .player img {
   width: 100%;
-  height: 100%;
+  height: auto;
   display: block;
-  object-fit: contain;
-  transform: scaleX(1.22) scaleY(1.08);
-  transform-origin: left center;
   animation: playerRockingMb 2s ease-in-out infinite;
 }
 
 @keyframes playerRockingMb {
   0%,
   100% {
-    transform: scaleX(1.22) scaleY(1.08) rotate(-1deg) translateY(0);
+    transform: rotate(-1deg) translateY(0);
   }
 
   25% {
-    transform: scaleX(1.22) scaleY(1.08) rotate(1deg) translateY(calc(-0.5 * var(--ru, 1vw)));
+    transform: rotate(1deg) translateY(calc(-0.5 * var(--ru, 1vw)));
   }
 
   50% {
-    transform: scaleX(1.22) scaleY(1.08) rotate(-1deg) translateY(0);
+    transform: rotate(-1deg) translateY(0);
   }
 
   75% {
-    transform: scaleX(1.22) scaleY(1.08) rotate(1deg) translateY(calc(0.5 * var(--ru, 1vw)));
+    transform: rotate(1deg) translateY(calc(0.5 * var(--ru, 1vw)));
   }
 }
 
