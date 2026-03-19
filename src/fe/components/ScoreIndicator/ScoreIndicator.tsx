@@ -12,21 +12,23 @@ const ScoreIndicator = ({ total, currentIndex, answerResults, indicatorImage }: 
   return (
     <div className="score-container">
       {Array.from({ length: total }).map((_, index) => {
-        let statusClass = "";
+        const statusClasses: string[] = [];
         const result = answerResults[index];
 
-        if (index === currentIndex) {
-           statusClass = "active";
-        } else if (result === true) {
-           statusClass = "completed-correct";
+        if (result === true) {
+          statusClasses.push("completed-correct");
         } else if (result === false) {
-           statusClass = "completed-wrong";
+          statusClasses.push("completed-wrong");
+        }
+
+        if (index === currentIndex) {
+          statusClasses.push("active");
         }
 
         return (
           <div 
              key={index} 
-             className={`score-item ${statusClass}`}
+             className={`score-item ${statusClasses.join(" ")}`.trim()}
           >
              <img src={indicatorImage} alt="Score" />
           </div>

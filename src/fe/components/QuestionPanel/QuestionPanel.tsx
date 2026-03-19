@@ -1,5 +1,6 @@
 // KHONG SUA KHI DOI GAME
 import "./QuestionPanel.css";
+import type { CSSProperties } from "react";
 import HtmlContentRenderer from "@/fe/components/ContentRenderer/HtmlContentRenderer";
 
 interface QuestionPanelProps {
@@ -19,7 +20,7 @@ const QuestionPanel = ({
   return (
     <div 
       className="question-container" 
-      style={{ borderImageSource: `url(${questionFrame})` }}
+      style={{ ["--question-frame" as string]: `url(${questionFrame})` } as CSSProperties}
     >
       <div className="question-text">
         <HtmlContentRenderer html={question} />

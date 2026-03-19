@@ -27,18 +27,10 @@ const AnswerOptionItem = ({
     let classes = "answer-container";
 
     if (isAnswered) {
-      if (isSelected) {
-        if (isCorrect) {
-          classes += " correct";
-        } else {
-          classes += " wrong selected";
-        }
-      } 
-      else if ((correctIndex >= 0 && index === correctIndex) || (isCorrect === false && index === correctIndex)) {
+      if ((correctIndex >= 0 && index === correctIndex) || (isSelected && isCorrect)) {
         classes += " correct";
-      }
-      else {
-         classes += " wrong";
+      } else if (isSelected && !isCorrect) {
+        classes += " wrong selected";
       }
     } else {
       if (isSelected) {

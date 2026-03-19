@@ -1,72 +1,37 @@
-/* KHONG SUA KHI DOI GAME */
 .game-header {
+  position: relative;
+  z-index: 10;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 0.5cqw 2cqw;
-  width: 100%;
+  padding: 0.3cqw 2cqw 0.85cqw;
+  flex-shrink: 0;
 }
 
 .game-main {
   position: relative;
-  z-index: 30;
+  z-index: 50;
+  flex: 3 1 0%;
+  min-height: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: stretch;
+  padding: 0 2%;
+  overflow: visible;
 }
 
-.game-button {
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  font-size: 2cqw;
-  text-shadow: 0 0.1cqw 0.2cqw rgba(0, 0, 0, 0.2);
-}
-
-@keyframes hop {
-  0% {
-    transform: translateY(0);
-  }
-
-  40% {
-    transform: translateY(-3cqw);
-  }
-
-  100% {
-    transform: translateY(0);
-  }
-}
-
-@keyframes correct-pulse {
-  0% {
-    transform: scale(1);
-    box-shadow: 0 0 0 0 hsl(110 45% 50% / 0.7);
-  }
-
-  50% {
-    transform: scale(1.05);
-    box-shadow: 0 0 2cqw 1cqw hsl(110 45% 50% / 0.3);
-  }
-
-  100% {
-    transform: scale(1);
-    box-shadow: 0 0 0 0 hsl(110 45% 50% / 0);
-  }
-}
-
-@keyframes incorrect-shake {
-
-  0%,
-  100% {
-    transform: translateX(0);
-  }
-
-  20%,
-  60% {
-    transform: translateX(-1cqw);
-  }
-
-  40%,
-  80% {
-    transform: translateX(1cqw);
-  }
+.question-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-self: center;
+  max-width: 40%;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  margin-top: -3%;
+  container-type: inline-size;
 }
 
 .katex,
@@ -92,50 +57,19 @@ body.is-mobile .pc-only {
   display: none !important;
 }
 
-body.is-mobile {
-  background-color: #8b0000;
-}
-
-body.is-mobile .game-container {
-  background-image: url("/src/fe/theme/images/mobile/background.png") !important;
-  background-size: 100% 100%;
-}
-
 body.is-mobile .game-header {
-  padding: 1% 2%;
+  padding: 1% 2% 7cqw;
 }
 
 body.is-mobile .game-main {
-  padding: 5% 8%;
-  padding-bottom: 35%;
+  padding: 0 3%;
+  flex: 3 1 0%;
+  min-height: 0;
   overflow: visible;
-  width: 100%;
+}
+
+body.is-mobile .question-section {
   max-width: 100%;
-  position: relative;
-  z-index: 20;
-}
-
-.question-text img,
-.answer-text img {
-  max-width: 100%;
-  max-height: 30cqw;
-  object-fit: contain;
-  cursor: pointer;
-  border-radius: 1cqw;
-  transition: transform 0.2s ease;
-  display: block;
-  margin: 1cqw auto;
-}
-
-.question-text img:hover,
-.answer-text img:hover {
-  transform: scale(1.02);
-  box-shadow: 0 0.5cqw 2cqw rgba(0, 0, 0, 0.2);
-}
-
-.question-text :not(.katex, .katex *),
-.answer-text :not(.katex, .katex *) {
-  font-size: inherit !important;
-  line-height: inherit !important;
-  box-sizing: border-box;
+  height: 100%;
+  margin-top: -2%;
 }

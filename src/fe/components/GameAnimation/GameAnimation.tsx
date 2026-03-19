@@ -1,23 +1,7 @@
 // SUA KHI DOI GAME
 import "./GameAnimation.css";
+import { useEffect } from "react";
 import { useGameAnimation, useDevice } from "@/fe/hooks";
-
-const ANIMATION_CONFIG = {
-  mobile: {
-    startIconLeft: 0,
-    finishIconLeft: 85,
-    playerLeftOffset: 6,
-    bot1LeftOffset: 3,
-    bot2LeftOffset: 0,
-  },
-  desktop: {
-    startIconLeft: 0,
-    finishIconLeft: 85,
-    playerLeftOffset: 6,
-    bot1LeftOffset: 3,
-    bot2LeftOffset: 0,
-  },
-};
 
 export interface GameAnimationProps {
   totalQuestions: number;
@@ -39,7 +23,6 @@ const GameAnimation = ({
   onResetRef,
 }: GameAnimationProps) => {
   const { assets, deviceType } = useDevice();
-  const config = ANIMATION_CONFIG[deviceType];
   const {
     playerPosition,
     bot1Position,
@@ -54,79 +37,66 @@ const GameAnimation = ({
     correctCount,
   });
 
-  if (onResetRef) {
-    onResetRef(resetPositions);
-  }
+  useEffect(() => {
+    onResetRef?.(resetPositions);
+  }, [onResetRef, resetPositions]);
 
-  const { startIconLeft, finishIconLeft } = config;
-  const playerOffset = config.playerLeftOffset;
-  const bot1Offset = config.bot1LeftOffset;
-  const bot2Offset = config.bot2LeftOffset;
-
-  const start = startIconLeft + 7.5;
-  const end = finishIconLeft;
-  const step = (end - start) / 5;
-  const maxOffset = Math.max(playerOffset, bot1Offset, bot2Offset);
-
-  const calculatePosition = (progress: number, offset: number) => {
-    if (progress === 0) {
-      return start + offset;
-    }
-    if (progress === 5) {
-      return end + (maxOffset - offset);
-    }
-    return start + step * progress;
+  const calculatePosition = (progress: number) => {
+    const maxLeft = deviceType === "mobile" ? 85 : 98;
+    const maxPosition = 5;
+    const clampedProgress = Math.max(0, Math.min(progress, maxPosition));
+    return (clampedProgress / maxPosition) * maxLeft;
   };
 
   return (
-    <div className="animation-section">
-      <div className="animation-track">
-        <div 
-          className="absolute bottom-0 z-10 opacity-80 w-[8%] translate-x-[50%]" 
-          style={{ left: `${startIconLeft + 10}%` }}
-        >
-           <img src={assets.startIcon} alt="Start" className="w-full h-auto" />
+    <section className="animation-section race-section">
+      <div className="animation-track race-track">
+        <div className="start-marker mb-only">
+          <img src={assets.startIcon} alt="Start" />
         </div>
+        <div className="race-lanes">
+          <div className="race-lane">
+            <div
+              className={`player user${isJumping.player ? " moving" : ""}`}
+              style={{
+                left: `${calculatePosition(playerPosition)}%`,
+                zIndex: 101,
+              }}
+            >
+              <span className="player-name" id="playerName">{playerName}</span>
+              <img src={assets.player} alt="Player" />
+            </div>
+          </div>
 
-        <div 
-          className="absolute bottom-0 z-10 w-[7%] -translate-x-[50%]" 
-          style={{ left: `${finishIconLeft}%` }}
-        >
-           <img src={assets.finishIcon} alt="Finish" className="w-full h-auto" />
+          <div className="race-lane">
+            <div
+              className={`player bot1${isJumping.bot1 ? " moving" : ""}`}
+              style={{
+                left: `${calculatePosition(bot1Position)}%`,
+                zIndex: 102,
+              }}
+            >
+              <img src={assets.bot1} alt="Bot 1" />
+            </div>
+          </div>
+
+          <div className="race-lane">
+            <div
+              className={`player bot2${isJumping.bot2 ? " moving" : ""}`}
+              style={{
+                left: `${calculatePosition(bot2Position)}%`,
+                zIndex: 103,
+              }}
+            >
+              <img src={assets.bot2} alt="Bot 2" />
+            </div>
+          </div>
         </div>
-
-        <div
-          className="player bottom-[9cqw]"
-          style={{
-            left: `${calculatePosition(playerPosition, playerOffset)}%`,
-            zIndex: 101
-          }}
-        >
-          <span className="player-name" id="playerName">{playerName}</span>
-          <img src={assets.player} alt="Player" />
-        </div>
-
-        <div
-          className="player bottom-[5cqw]"
-          style={{
-            left: `${calculatePosition(bot1Position, bot1Offset)}%`,
-            zIndex: 102
-          }}
-        >
-          <img src={assets.bot1} alt="Bot 1" />
-        </div>
-
-        <div
-          className="player bottom-[1cqw]"
-          style={{
-            left: `${calculatePosition(bot2Position, bot2Offset)}%`,
-            zIndex: 103
-          }}
-        >
-          <img src={assets.bot2} alt="Bot 2" />
+        <div className="finish-marker mb-only">
+          <img src={assets.finishIcon} alt="Finish" />
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

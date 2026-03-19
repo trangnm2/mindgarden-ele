@@ -14,30 +14,29 @@ const GameResultScreen = ({ score, totalQuestions, onRestart }: GameResultScreen
   const isWinner = score >= totalQuestions;
 
   return (
-    <div className="game-overlay">
+    <div className="game-overlay show">
       <div className="overlay-content">
-        <img
-          src={assets.player}
-          alt="Character"
-          className={`mx-auto ${isWinner ? "celebrating" : ""}`}
-          style={{ width: '40cqw', marginBottom: '2cqw' }}
-        />
-
         <h2>
           {isWinner ? GAME_TEXTS.result.winTitle : GAME_TEXTS.result.loseTitle}
         </h2>
 
-        <p>
-          {isWinner
-            ? GAME_TEXTS.result.winMessage
-            : GAME_TEXTS.result.loseMessage(score, totalQuestions)}
-        </p>
+        <div className="overlay-message">
+          <p>
+            {isWinner
+              ? GAME_TEXTS.result.winMessage
+              : GAME_TEXTS.result.loseMessage(score, totalQuestions)}
+          </p>
+        </div>
 
         <button
           onClick={onRestart}
-          className="restart-btn"
+          className="submit-btn"
         >
-          <img src={assets.continueButton} alt={GAME_TEXTS.buttons.continue} />
+          <img
+            src={assets.continueButton}
+            alt={GAME_TEXTS.buttons.continue}
+            className="restart-btn-img"
+          />
         </button>
       </div>
     </div>

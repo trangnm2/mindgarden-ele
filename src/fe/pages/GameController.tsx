@@ -1,6 +1,6 @@
 // KHONG SUA KHI DOI GAME
 import "./game-layout.css";
-import { useEffect, useRef, useCallback } from "react";
+import { useEffect, useRef, useCallback, type CSSProperties } from "react";
 import { useDevice } from "@/fe/hooks";
 import { useQuizState, useAudioController, QuizAnswer } from "@/be";
 import { GAME_TEXTS } from "@/fe/theme";
@@ -99,101 +99,94 @@ const GameController = ({ customQuestions }: GameControllerProps) => {
     );
   }
 
-  const mainMaxWidth = "w-[45%]";
-
   const playerName = resolvePlayerName(username);
+  const gameContainerStyle = {
+    ["--game-background" as string]: `url(${assets.background})`,
+  } as CSSProperties;
 
   return (
     <div
       className="game-container flex flex-col"
+      style={gameContainerStyle}
     >
-      <div className="w-full flex flex-col pt-[1cqw] pb-[1cqw]">
-        {!isCompleted && (
-          <header className="game-header">
-            <ScoreIndicator
-              total={totalQuestions}
-              currentIndex={currentQuestionIndex}
-              answerResults={answers}
-              indicatorImage={assets.scoreIcon}
-            />
-          </header>
-        )}
+      <div className="game-shell w-full flex flex-col">
+        <header className="game-header">
+          <ScoreIndicator
+            total={totalQuestions}
+            currentIndex={currentQuestionIndex}
+            answerResults={answers}
+            indicatorImage={assets.scoreIcon}
+          />
+        </header>
 
         <main 
-          className={`game-main flex-1 flex flex-col px-[2%] pb-[0.5cqw] ${mainMaxWidth} mx-auto`}
+          className="game-main"
           style={{ containerType: 'inline-size' }}
         >
-          {isCompleted ? (
-            <GameResultScreen
-              score={correctCount}
-              totalQuestions={totalQuestions}
-              onRestart={onFinish}
+          <div className="question-section">
+            <QuestionPanel
+              question={quiz.text ?? ""}
+              imageUrl={undefined}
+              audioUrl={quiz.audioUrl}
+              questionFrame={assets.questionFrame}
             />
-          ) : (
-            <div className="question-section">
-              <QuestionPanel
-                question={quiz.text ?? ""}
-                imageUrl={undefined}
-                audioUrl={quiz.audioUrl}
-                questionFrame={assets.questionFrame}
-              />
 
-              <div
-                className="answers-grid"
-                key={currentQuestionIndex}
-              >
-                {quiz.answers?.map((answer: QuizAnswer, idx: number) => {
-                  const isSelected = selectedAnswer?.id === answer.id;
+            <div
+              className="answers-grid"
+              key={currentQuestionIndex}
+            >
+              {quiz.answers?.map((answer: QuizAnswer, idx: number) => {
+                const isSelected = selectedAnswer?.id === answer.id;
 
-                  let isCorrectAnswer: boolean | null = null;
-                  if (hasSubmitted && currentResult && isSelected) {
-                    isCorrectAnswer = currentResult.isCorrect;
-                  }
+                let isCorrectAnswer: boolean | null = null;
+                if (hasSubmitted && currentResult && isSelected) {
+                  isCorrectAnswer = currentResult.isCorrect;
+                }
 
-                  return (
-                    <div key={answer.id}>
-                      <AnswerOptionItem
-                        answer={answer.content ?? ""}
-                        index={idx}
-                        isSelected={isSelected}
-                        isCorrect={isCorrectAnswer}
-                        isDisabled={hasSubmitted || isSubmitting}
-                        isAnswered={hasSubmitted}
-                        correctIndex={quiz.correctIndex}
-                        onClick={() => onAnswerSelect(answer)}
-                      />
-                    </div>
-                  );
-                })}
-              </div>
-
-              <div className="flex justify-center mt-0 w-full">
-                <SubmitButton
-                  isAnswered={hasSubmitted}
-                  isDisabled={(!selectedAnswer && !hasSubmitted) || isSubmitting}
-                  onClick={hasSubmitted ? onContinue : onSubmit}
-                  submitButtonImage={assets.submitButton}
-                  continueButtonImage={assets.continueButton}
-                />
-              </div>
-              {hasSubmitted && currentResult?.explanation && (
-                <div className="mt-[1cqw] px-[1cqw] py-[0.5cqw] rounded-[1cqw] text-center" style={{ background: "rgba(255,255,255,0.8)" }}>
-                  <p className="text-[1.5cqw]" style={{ color: "rgba(74,53,32,0.7)" }}>{currentResult.explanation}</p>
-                </div>
-              )}
+                return (
+                  <div key={answer.id}>
+                    <AnswerOptionItem
+                      answer={answer.content ?? ""}
+                      index={idx}
+                      isSelected={isSelected}
+                      isCorrect={isCorrectAnswer}
+                      isDisabled={hasSubmitted || isSubmitting || isCompleted}
+                      isAnswered={hasSubmitted}
+                      correctIndex={quiz.correctIndex}
+                      onClick={() => onAnswerSelect(answer)}
+                    />
+                  </div>
+                );
+              })}
             </div>
-          )}
+
+            <div className="flex justify-center mt-0 w-full">
+              <SubmitButton
+                isAnswered={hasSubmitted}
+                isDisabled={isCompleted || ((!selectedAnswer && !hasSubmitted) || isSubmitting)}
+                onClick={hasSubmitted ? onContinue : onSubmit}
+                submitButtonImage={assets.submitButton}
+                continueButtonImage={assets.continueButton}
+              />
+            </div>
+          </div>
         </main>
-        
-        {!isCompleted && (
-          <GameAnimation
+
+        <GameAnimation
+          totalQuestions={totalQuestions}
+          currentQuestionIndex={currentQuestionIndex}
+          hasSubmitted={hasSubmitted}
+          currentResult={currentResult}
+          correctCount={correctCount}
+          playerName={playerName}
+          onResetRef={handleResetRef}
+        />
+
+        {isCompleted && (
+          <GameResultScreen
+            score={correctCount}
             totalQuestions={totalQuestions}
-            currentQuestionIndex={currentQuestionIndex}
-            hasSubmitted={hasSubmitted}
-            currentResult={currentResult}
-            correctCount={correctCount}
-            playerName={playerName}
-            onResetRef={handleResetRef}
+            onRestart={onFinish}
           />
         )}
       </div>

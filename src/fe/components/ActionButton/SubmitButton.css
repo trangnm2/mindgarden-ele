@@ -1,4 +1,3 @@
-/* KHONG SUA KHI DOI GAME */
 .submit-btn {
   margin-top: 1.5cqw;
   background: transparent;
@@ -13,13 +12,14 @@
 }
 
 .submit-btn img {
-  width: 16cqw;
+  width: 18cqw;
+  min-width: 90px;
   height: auto;
   object-fit: contain;
 }
 
 .submit-btn:hover:not(:disabled) {
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
 
 .submit-btn:active:not(:disabled) {
@@ -32,8 +32,8 @@
 }
 
 body.is-mobile .submit-btn {
-  margin-top: 2%;
-  padding: 1cqw;
+  margin-top: 4%;
+  padding: calc(1 * var(--qu));
   font-size: 0;
   line-height: 0;
   background: transparent;
@@ -41,6 +41,7 @@ body.is-mobile .submit-btn {
 }
 
 body.is-mobile .submit-btn img {
-  width: 18cqw;
+  width: calc(20.65 * var(--qu));
+  min-width: 0;
   height: auto;
 }
