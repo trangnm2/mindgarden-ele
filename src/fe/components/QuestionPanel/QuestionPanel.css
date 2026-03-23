@@ -25,7 +25,7 @@
   left: 13%;
   right: 11%;
   z-index: 2;
-  font-size: max(14px, 3.7cqw);
+  font-size: max(2.7cqw, 3.7cqw);
   font-weight: 600;
   color: #000000;
   text-align: justify;
@@ -65,7 +65,7 @@
 }
 
 .question-text .katex {
-  font-size: max(16px, 3.7cqw);
+  font-size: max(3.1cqw, 3.7cqw);
 }
 
 .question-text p {

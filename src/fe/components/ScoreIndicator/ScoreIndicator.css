@@ -1,12 +1,12 @@
 .score-container {
   display: flex;
-  gap: max(12px, 1.5cqw);
+  gap: max(0.9cqw, 1.5cqw);
   justify-content: center;
   align-items: flex-end;
 }
 
 .score-item {
-  width: max(40px, 3cqw);
+  width: max(3.1cqw, 3cqw);
   height: auto;
   transition: all 0.4s ease;
   filter: grayscale(70%) brightness(0.5);

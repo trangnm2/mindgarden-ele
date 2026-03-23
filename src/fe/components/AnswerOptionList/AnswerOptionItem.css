@@ -20,7 +20,7 @@
   position: relative;
   cursor: pointer;
   height: 100%;
-  min-height: 36px;
+  min-height: 10.3cqw;
   display: flex;
   align-items: center;
   gap: 3%;
@@ -44,7 +44,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: max(13.5px, 5cqw);
+  font-size: max(3.9cqw, 5cqw);
   font-weight: 700;
   color: #000000;
   flex-shrink: 0;
@@ -55,7 +55,7 @@
   display: block;
   position: relative;
   z-index: 2;
-  font-size: max(13.5px, 4.4cqw);
+  font-size: max(3.9cqw, 4.4cqw);
   font-weight: 600;
   color: #000000;
   text-align: justify;
@@ -71,7 +71,7 @@
 }
 
 .answer-text .katex {
-  font-size: max(16px, 5cqw);
+  font-size: max(4.6cqw, 5cqw);
 }
 
 .answer-text img {

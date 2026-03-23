@@ -93,14 +93,14 @@
   transform: translateX(-50%);
   background-color: hsl(30 100% 90%);
   color: #000000;
-  font-size: clamp(1rem, 14cqw, 1.4rem);
+  font-size: clamp(12.3cqw, 14cqw, 17.2cqw);
   font-weight: 700;
-  padding: 0.2rem 0.7rem;
-  border-radius: 0.4rem;
+  padding: 2.5cqw 8.6cqw;
+  border-radius: 4.9cqw;
   white-space: nowrap;
   z-index: 100;
-  box-shadow: 0 0.2rem 0.4rem rgba(0, 0, 0, 0.2);
-  border: 0.15rem solid hsl(30 80% 65%);
+  box-shadow: 0 2.5cqw 4.9cqw rgba(0, 0, 0, 0.2);
+  border: 1.8cqw solid hsl(30 80% 65%);
   pointer-events: none;
 }
 
@@ -213,12 +213,12 @@ body.is-mobile .player-name {
   top: -55%;
   left: 50%;
   transform: translateX(-50%);
-  font-size: clamp(0.6rem, 9cqw, 0.9rem);
-  padding: 0.15rem 0.6rem;
-  border-radius: 0.35rem;
+  font-size: clamp(7.4cqw, 9cqw, 11.1cqw);
+  padding: 1.8cqw 7.4cqw;
+  border-radius: 4.3cqw;
   background-color: hsl(30 100% 90%);
-  border: 0.12rem solid hsl(30 80% 65%);
+  border: 1.5cqw solid hsl(30 80% 65%);
   white-space: nowrap;
   z-index: 100;
-  box-shadow: 0 0.15rem 0.3rem rgba(0, 0, 0, 0.2);
+  box-shadow: 0 1.8cqw 3.7cqw rgba(0, 0, 0, 0.2);
 }
