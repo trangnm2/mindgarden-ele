@@ -1,4 +1,4 @@
-// KHONG SUA KHI DOI GAME
+// SUA KHI DOI GAME
 export const FIXED_TOTAL_QUESTIONS = 5;
 
 export const USE_SAMPLE_DATA = false;
@@ -26,11 +26,16 @@ export const GAME_TEXTS = {
 export const MARKER_VISIBILITY = {
   startPC: true,
   startMB: true,
-  endPC: true,
+  endPC: false,
   endMB: true,
 };
 
 export const MARKER_POSITION = {
   startFrontPC: true,
   startFrontMB: false,
+};
+
+export const BOT_VISIBILITY = {
+  bot1: true,
+  bot2: true,
 };

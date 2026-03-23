@@ -42,7 +42,16 @@ Doi ten file hinh se lam vo 3 file CSS nay.
 ### 2. Asset mapping
 - `src/fe/theme/assets.ts` → Them/bot slot hinh anh khi doi kieu game (vd: game leo nui khong can bot1, bot2)
 
-### 3. Animation (khi doi kieu gameplay)
+### 3. Game config
+- `src/fe/theme/gameSettings.ts` → Cau hinh game:
+  - `MARKER_VISIBILITY` → An/hien marker start va end tren PC va MB (true/false)
+    - `startPC`, `startMB`, `endPC`, `endMB`
+  - `MARKER_POSITION` → Vi tri start marker truoc/sau player (true = truoc mat, false = sau dit)
+    - `startFrontPC`, `startFrontMB`
+  - `BOT_VISIBILITY` → An/hien bot (true/false, an = bo race-lane, cac lane con lai chia deu)
+    - `bot1`, `bot2`
+
+### 4. Animation (khi doi kieu gameplay)
 - `src/fe/components/GameAnimation/GameAnimation.tsx` → Component hien thi animation (bao gom config vi tri)
 - `src/fe/components/GameAnimation/GameAnimation.css` → Style animation
 - `src/fe/hooks/useGameAnimation.ts` → Logic di chuyen, toc do animation
@@ -76,7 +85,7 @@ src/
 │   │   ├── images/desktop/                           SUA - tuong tu mobile
 │   │   ├── assets.ts                                 SUA - map hinh anh, them/bot slot
 │   │   ├── index.ts                                  KHONG SUA
-│   │   ├── gameSettings.ts                           KHONG SUA
+│   │   ├── gameSettings.ts                           SUA - config an/hien va vi tri marker
 │   │   ├── audio.ts                                  KHONG SUA
 │   │   └── mockQuestions.ts                          KHONG SUA
 │   │
@@ -141,10 +150,11 @@ src/
 
 ## Tom tat
 
-**SUA (6 items):**
+**SUA (7 items):**
 - `fe/theme/images/mobile/` - thay hinh, giu nguyen ten file
 - `fe/theme/images/desktop/` - thay hinh, giu nguyen ten file
 - `fe/theme/assets.ts` - map hinh anh, them/bot slot
+- `fe/theme/gameSettings.ts` - config an/hien marker (MARKER_VISIBILITY), vi tri marker (MARKER_POSITION)
 - `fe/components/GameAnimation/GameAnimation.tsx` - component animation + config vi tri
 - `fe/components/GameAnimation/GameAnimation.css` - style animation
 - `fe/hooks/useGameAnimation.ts` - logic animation

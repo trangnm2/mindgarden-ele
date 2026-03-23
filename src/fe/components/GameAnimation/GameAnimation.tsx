@@ -2,7 +2,7 @@
 import "./GameAnimation.css";
 import { useEffect } from "react";
 import { useGameAnimation, useDevice } from "@/fe/hooks";
-import { MARKER_VISIBILITY, MARKER_POSITION } from "@/fe/theme";
+import { MARKER_VISIBILITY, MARKER_POSITION, BOT_VISIBILITY } from "@/fe/theme";
 
 export interface GameAnimationProps {
   totalQuestions: number;
@@ -56,7 +56,7 @@ const GameAnimation = ({
           className="start-marker"
           style={{
             visibility: ((deviceType === "mobile" && MARKER_VISIBILITY.startMB) || (deviceType !== "mobile" && MARKER_VISIBILITY.startPC)) ? "visible" : "hidden",
-            left: (deviceType === "mobile" ? MARKER_POSITION.startFrontMB : MARKER_POSITION.startFrontPC) ? (deviceType === "mobile" ? "9%" : "6%") : undefined,
+            left: (deviceType === "mobile" ? MARKER_POSITION.startFrontMB : MARKER_POSITION.startFrontPC) ? (deviceType === "mobile" ? "12%" : "6%") : undefined,
           }}
         >
           <img src={assets.startIcon} alt="Start" />
@@ -75,6 +75,7 @@ const GameAnimation = ({
             </div>
           </div>
 
+          {BOT_VISIBILITY.bot1 && (
           <div className="race-lane">
             <div
               className={`player bot1${isJumping.bot1 ? " moving" : ""}`}
@@ -86,7 +87,9 @@ const GameAnimation = ({
               <img src={assets.bot1} alt="Bot 1" />
             </div>
           </div>
+          )}
 
+          {BOT_VISIBILITY.bot2 && (
           <div className="race-lane">
             <div
               className={`player bot2${isJumping.bot2 ? " moving" : ""}`}
@@ -98,6 +101,7 @@ const GameAnimation = ({
               <img src={assets.bot2} alt="Bot 2" />
             </div>
           </div>
+          )}
         </div>
         <div
           className="finish-marker"
