@@ -2,6 +2,7 @@
 import "./GameAnimation.css";
 import { useEffect } from "react";
 import { useGameAnimation, useDevice } from "@/fe/hooks";
+import { MARKER_VISIBILITY } from "@/fe/theme";
 
 export interface GameAnimationProps {
   totalQuestions: number;
@@ -51,7 +52,10 @@ const GameAnimation = ({
   return (
     <section className="animation-section race-section">
       <div className="animation-track race-track">
-        <div className="start-marker mb-only">
+        <div
+          className="start-marker"
+          style={{ display: ((deviceType === "mobile" && MARKER_VISIBILITY.startMB) || (deviceType !== "mobile" && MARKER_VISIBILITY.startPC)) ? undefined : "none" }}
+        >
           <img src={assets.startIcon} alt="Start" />
         </div>
         <div className="race-lanes">
@@ -92,7 +96,10 @@ const GameAnimation = ({
             </div>
           </div>
         </div>
-        <div className="finish-marker mb-only">
+        <div
+          className="finish-marker"
+          style={{ display: ((deviceType === "mobile" && MARKER_VISIBILITY.endMB) || (deviceType !== "mobile" && MARKER_VISIBILITY.endPC)) ? undefined : "none" }}
+        >
           <img src={assets.finishIcon} alt="Finish" />
         </div>
       </div>

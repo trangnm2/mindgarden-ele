@@ -22,3 +22,10 @@ export const GAME_TEXTS = {
 
   playerDefaultName: "User",
 };
+
+export const MARKER_VISIBILITY = {
+  startPC: true,
+  startMB: true,
+  endPC: true,
+  endMB: true,
+};
