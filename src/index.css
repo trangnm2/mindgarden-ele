@@ -1,0 +1,89 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html,
+  body,
+  #root {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+  }
+
+  body {
+    font-family: 'Medium SF Compact Rounded', 'SF Pro Rounded', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+
+  .game-container {
+    width: 100%;
+    height: 100vh;
+    background-image: var(--game-background);
+    background-size: 100% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    container-type: inline-size;
+    overflow: visible;
+  }
+
+  .game-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.2) 100%);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .game-shell {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex: 1;
+    min-height: 0;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+  }
+
+  body.is-mobile {
+    background-color: #8b0000;
+  }
+
+  body.is-mobile .game-container {
+    --qu: min(1vw, 0.75vh);
+  }
+
+  body.is-mobile .game-shell {
+    padding: 0;
+  }
+}
+
+.question-text :not(.katex, .katex *),
+.answer-text :not(.katex, .katex *) {
+  font-size: inherit !important;
+  line-height: inherit !important;
+  box-sizing: border-box;
+}
+
+.question-text,
+.answer-text {
+  color: #000000;
+}

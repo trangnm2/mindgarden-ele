@@ -1,0 +1,130 @@
+.question-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.question-container {
+  position: relative;
+  width: 160%;
+  display: block;
+  background-image: var(--question-frame);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  aspect-ratio: 2.5 / 1;
+  box-sizing: border-box;
+  flex-shrink: 1;
+  min-height: 0;
+}
+
+.question-text {
+  position: absolute;
+  top: 23%;
+  bottom: 23%;
+  left: 13%;
+  right: 11%;
+  z-index: 2;
+  font-size: max(2.7cqw, 3.7cqw);
+  font-weight: 600;
+  color: #000000;
+  text-align: justify;
+  text-align-last: left;
+  line-height: 1.4;
+  box-sizing: border-box;
+  overflow-x: visible;
+  overflow-y: auto;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  padding-right: 2%;
+}
+
+.question-text::-webkit-scrollbar {
+  width: 1cqw;
+  height: 1cqw;
+}
+
+.question-text::-webkit-scrollbar-track {
+  background: rgba(139, 69, 19, 0.1);
+  border-radius: 0.5cqw;
+}
+
+.question-text::-webkit-scrollbar-thumb {
+  background: rgba(139, 69, 19, 0.4);
+  border-radius: 0.5cqw;
+}
+
+.question-text::-webkit-scrollbar-thumb:hover {
+  background: rgba(139, 69, 19, 0.6);
+}
+
+.question-text .katex-display {
+  margin: 0;
+  overflow-x: auto;
+  overflow-y: visible;
+}
+
+.question-text .katex {
+  font-size: max(3.1cqw, 3.7cqw);
+}
+
+.question-text p {
+  margin: 0;
+  padding: 0;
+  text-align: inherit;
+  text-align-last: inherit;
+}
+
+.question-text img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  cursor: pointer;
+  border-radius: 1cqw;
+  transition: transform 0.2s ease;
+  display: block;
+  margin: 1cqw auto;
+}
+
+.question-text img:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0.5cqw 2cqw rgba(0, 0, 0, 0.2);
+}
+
+body.is-mobile .question-container {
+  background-image: var(--question-frame);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  padding: 10% 12%;
+  width: 100%;
+  margin-left: 0;
+  margin-right: 0;
+  border: none;
+  border-image: none;
+  aspect-ratio: unset;
+  flex: 2;
+  min-height: 0;
+}
+
+body.is-mobile .question-text {
+  position: absolute;
+  top: 20%;
+  bottom: 20%;
+  left: 12%;
+  right: 13%;
+  font-size: calc(3.5 * var(--qu));
+  color: #4a2c00;
+  text-align: justify;
+  text-align-last: left;
+  overflow-y: auto;
+  overflow-x: visible;
+}
+
+body.is-mobile .question-text .katex {
+  font-size: calc(4.5 * var(--qu));
+}
+
+body.is-mobile .question-text .katex .msupsub,
+body.is-mobile .question-text .katex .mfrac {
+  font-size: 0.85em;
+}

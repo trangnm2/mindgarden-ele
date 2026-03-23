@@ -1,0 +1,59 @@
+.score-container {
+  display: flex;
+  gap: max(0.9cqw, 1.5cqw);
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.score-item {
+  width: max(3.1cqw, 3cqw);
+  height: auto;
+  transition: all 0.4s ease;
+  filter: grayscale(70%) brightness(0.5);
+  transform: scale(0.9);
+  opacity: 0.5;
+}
+
+.score-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.score-item.active {
+  filter: grayscale(0%) brightness(1.2) drop-shadow(0 0 1cqw rgba(255, 215, 0, 1)) drop-shadow(0 0 2cqw rgba(255, 165, 0, 0.8));
+  transform: scale(1.1);
+  opacity: 1;
+  animation: scoreSwing 1.5s ease-in-out infinite;
+}
+
+.score-item.completed-correct {
+  filter: grayscale(0%) brightness(1.1);
+  transform: scale(1);
+  opacity: 1;
+}
+
+.score-item.completed-wrong {
+  filter: grayscale(70%) brightness(0.5);
+  transform: scale(0.9);
+  opacity: 0.5;
+}
+
+@keyframes scoreSwing {
+  0%,
+  100% {
+    transform: scale(1.1) rotate(-8deg);
+  }
+
+  50% {
+    transform: scale(1.1) rotate(8deg);
+  }
+}
+
+body.is-mobile .score-container {
+  gap: calc(3 * var(--qu));
+}
+
+body.is-mobile .score-item {
+  width: calc(8 * var(--qu));
+}
