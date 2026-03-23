@@ -209,7 +209,7 @@ body.is-mobile .race-lanes {
   flex-direction: column;
   justify-content: flex-end;
   gap: 0;
-  padding: calc(2.5 * var(--ru)) 0 calc(3 * var(--ru)) calc(12 * var(--ru));
+  padding: calc(2.5 * var(--ru)) 0 calc(7.5 * var(--ru)) calc(12 * var(--ru));
   overflow: visible;
 }
 
@@ -228,46 +228,47 @@ body.is-mobile .player {
   height: auto;
   transition: left 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   z-index: 5;
+  animation: playerRockingMb 2s ease-in-out infinite;
+  container-type: inline-size;
 }
 
 body.is-mobile .player img {
   width: 100%;
   height: auto;
   display: block;
-  animation: playerRockingMb 2s ease-in-out infinite;
 }
 
 @keyframes playerRockingMb {
 
   0%,
   100% {
-    transform: rotate(-1deg) translateY(0);
+    transform: translateY(-25%) rotate(-2deg);
   }
 
   25% {
-    transform: rotate(1deg) translateY(calc(-0.5 * var(--ru, 1vw)));
+    transform: translateY(calc(-25% - 0.4cqw)) rotate(2deg);
   }
 
   50% {
-    transform: rotate(-1deg) translateY(0);
+    transform: translateY(-25%) rotate(-2deg);
   }
 
   75% {
-    transform: rotate(1deg) translateY(calc(0.5 * var(--ru, 1vw)));
+    transform: translateY(calc(-25% + 0.4cqw)) rotate(2deg);
   }
 }
 
 body.is-mobile .player-name {
   position: absolute;
-  top: -55%;
+  top: -35%;
   left: 50%;
   transform: translateX(-50%);
-  font-size: clamp(7.4cqw, 9cqw, 11.1cqw);
-  padding: 1.8cqw 7.4cqw;
-  border-radius: 4.3cqw;
+  font-size: clamp(14cqw, 16cqw, 19cqw);
+  padding: 3cqw 9.5cqw;
+  border-radius: 4.9cqw;
   background-color: hsl(30 100% 90%);
-  border: 1.5cqw solid hsl(30 80% 65%);
+  border: 1.8cqw solid hsl(30 80% 65%);
   white-space: nowrap;
   z-index: 100;
-  box-shadow: 0 1.8cqw 3.7cqw rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2.2cqw 4.3cqw rgba(0, 0, 0, 0.2);
 }
