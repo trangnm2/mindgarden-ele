@@ -54,7 +54,7 @@ const GameAnimation = ({
       <div className="animation-track race-track">
         <div
           className="start-marker"
-          style={{ display: ((deviceType === "mobile" && MARKER_VISIBILITY.startMB) || (deviceType !== "mobile" && MARKER_VISIBILITY.startPC)) ? undefined : "none" }}
+          style={{ visibility: ((deviceType === "mobile" && MARKER_VISIBILITY.startMB) || (deviceType !== "mobile" && MARKER_VISIBILITY.startPC)) ? "visible" : "hidden" }}
         >
           <img src={assets.startIcon} alt="Start" />
         </div>
@@ -98,7 +98,7 @@ const GameAnimation = ({
         </div>
         <div
           className="finish-marker"
-          style={{ display: ((deviceType === "mobile" && MARKER_VISIBILITY.endMB) || (deviceType !== "mobile" && MARKER_VISIBILITY.endPC)) ? undefined : "none" }}
+          style={{ visibility: ((deviceType === "mobile" && MARKER_VISIBILITY.endMB) || (deviceType !== "mobile" && MARKER_VISIBILITY.endPC)) ? "visible" : "hidden" }}
         >
           <img src={assets.finishIcon} alt="Finish" />
         </div>
