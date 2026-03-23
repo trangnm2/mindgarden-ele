@@ -32,7 +32,7 @@
   text-align-last: left;
   line-height: 1.4;
   box-sizing: border-box;
-  overflow-x: hidden;
+  overflow-x: visible;
   overflow-y: auto;
   word-wrap: break-word;
   overflow-wrap: break-word;
@@ -61,7 +61,7 @@
 .question-text .katex-display {
   margin: 0;
   overflow-x: auto;
-  overflow-y: hidden;
+  overflow-y: visible;
 }
 
 .question-text .katex {
@@ -117,7 +117,7 @@ body.is-mobile .question-text {
   text-align: justify;
   text-align-last: left;
   overflow-y: auto;
-  overflow-x: hidden;
+  overflow-x: visible;
 }
 
 body.is-mobile .question-text .katex {
