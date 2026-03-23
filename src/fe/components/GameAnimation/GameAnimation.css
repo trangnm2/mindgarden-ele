@@ -59,13 +59,13 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 2%;
+  gap: 0.5%;
   overflow: visible;
 }
 
 .race-lane {
   position: relative;
-  height: 4.5cqw;
+  height: 3.5cqw;
   width: 100%;
 }
 

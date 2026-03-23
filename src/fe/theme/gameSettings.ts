@@ -29,3 +29,8 @@ export const MARKER_VISIBILITY = {
   endPC: true,
   endMB: true,
 };
+
+export const MARKER_POSITION = {
+  startFrontPC: true,
+  startFrontMB: false,
+};

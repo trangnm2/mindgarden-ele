@@ -2,7 +2,7 @@
 import "./GameAnimation.css";
 import { useEffect } from "react";
 import { useGameAnimation, useDevice } from "@/fe/hooks";
-import { MARKER_VISIBILITY } from "@/fe/theme";
+import { MARKER_VISIBILITY, MARKER_POSITION } from "@/fe/theme";
 
 export interface GameAnimationProps {
   totalQuestions: number;
@@ -54,7 +54,10 @@ const GameAnimation = ({
       <div className="animation-track race-track">
         <div
           className="start-marker"
-          style={{ visibility: ((deviceType === "mobile" && MARKER_VISIBILITY.startMB) || (deviceType !== "mobile" && MARKER_VISIBILITY.startPC)) ? "visible" : "hidden" }}
+          style={{
+            visibility: ((deviceType === "mobile" && MARKER_VISIBILITY.startMB) || (deviceType !== "mobile" && MARKER_VISIBILITY.startPC)) ? "visible" : "hidden",
+            left: (deviceType === "mobile" ? MARKER_POSITION.startFrontMB : MARKER_POSITION.startFrontPC) ? (deviceType === "mobile" ? "9%" : "6%") : undefined,
+          }}
         >
           <img src={assets.startIcon} alt="Start" />
         </div>
