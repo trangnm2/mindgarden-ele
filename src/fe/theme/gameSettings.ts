@@ -36,6 +36,6 @@ export const MARKER_POSITION = {
 };
 
 export const BOT_VISIBILITY = {
-  bot1: false,
-  bot2: false,
+  bot1: true,
+  bot2: true,
 };
