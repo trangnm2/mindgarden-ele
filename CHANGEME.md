@@ -31,6 +31,8 @@ Ten file chuan (KHONG doi ten):
 | `start-icon.png` | Icon xuat phat |
 | `finish-icon.png` | Icon dich |
 | `score-icon.png` | Icon diem |
+| `75upper.png` | Background phan 75% tren |
+| `25bottom.png` | Background phan 25% duoi |
 
 **LUU Y QUAN TRONG:** Ten file hinh **BAT BUOC** giu nguyen vi ngoai `assets.ts`, con co 3 file CSS `KHONG SUA` reference truc tiep theo path:
 - `src/index.css` dong 31 → `background.png` (desktop)
@@ -50,6 +52,8 @@ Doi ten file hinh se lam vo 3 file CSS nay.
     - `startFrontPC`, `startFrontMB`
   - `BOT_VISIBILITY` → An/hien bot (true/false, an = bo race-lane, cac lane con lai chia deu)
     - `bot1`, `bot2`
+  - `SECTION_BACKGROUND` → Bat/tat background rieng cho phan 75% tren va 25% duoi (true/false)
+    - `upperPC`, `upperMB` (75upper.png), `bottomPC`, `bottomMB` (25bottom.png)
 
 ### 4. Animation (khi doi kieu gameplay)
 - `src/fe/components/GameAnimation/GameAnimation.tsx` → Component hien thi animation (bao gom config vi tri)

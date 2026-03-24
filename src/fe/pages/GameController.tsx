@@ -3,7 +3,7 @@ import "./game-layout.css";
 import { useEffect, useRef, useCallback, type CSSProperties } from "react";
 import { useDevice } from "@/fe/hooks";
 import { useQuizState, useAudioController, QuizAnswer } from "@/be";
-import { GAME_TEXTS } from "@/fe/theme";
+import { GAME_TEXTS, SECTION_BACKGROUND } from "@/fe/theme";
 import { resolvePlayerName } from "@/fe/hooks";
 import {
   ScoreIndicator,
@@ -19,7 +19,7 @@ interface GameControllerProps {
 }
 
 const GameController = ({ customQuestions }: GameControllerProps) => {
-  const { assets } = useDevice();
+  const { assets, deviceType } = useDevice();
   const { playButtonClick, playCorrectAnswer, playWrongAnswer, playFinishGame } = useAudioController();
   const animationResetRef = useRef<(() => void) | null>(null);
 
@@ -110,6 +110,20 @@ const GameController = ({ customQuestions }: GameControllerProps) => {
       style={gameContainerStyle}
     >
       <div className="game-shell w-full flex flex-col">
+        <div
+          className="game-upper-section"
+          style={{
+            flex: '3 1 0%',
+            display: 'flex',
+            flexDirection: 'column',
+            minHeight: 0,
+            ...(((deviceType === "mobile" && SECTION_BACKGROUND.upperMB) || (deviceType !== "mobile" && SECTION_BACKGROUND.upperPC)) ? {
+              backgroundImage: `url(${assets.upperBg})`,
+              backgroundSize: '100% 100%',
+              backgroundRepeat: 'no-repeat',
+            } : {}),
+          }}
+        >
         <header className="game-header">
           <ScoreIndicator
             total={totalQuestions}
@@ -121,7 +135,7 @@ const GameController = ({ customQuestions }: GameControllerProps) => {
 
         <main 
           className="game-main"
-          style={{ containerType: 'inline-size' }}
+          style={{ containerType: 'inline-size' as any }}
         >
           <div className="question-section">
             <QuestionPanel
@@ -171,7 +185,20 @@ const GameController = ({ customQuestions }: GameControllerProps) => {
             </div>
           </div>
         </main>
+        </div>
 
+        <div
+          className="game-bottom-section"
+          style={{
+            flex: '1 1 0%',
+            minHeight: 0,
+            ...(((deviceType === "mobile" && SECTION_BACKGROUND.bottomMB) || (deviceType !== "mobile" && SECTION_BACKGROUND.bottomPC)) ? {
+              backgroundImage: `url(${assets.bottomBg})`,
+              backgroundSize: '100% 100%',
+              backgroundRepeat: 'no-repeat',
+            } : {}),
+          }}
+        >
         <GameAnimation
           totalQuestions={totalQuestions}
           currentQuestionIndex={currentQuestionIndex}
@@ -181,6 +208,7 @@ const GameController = ({ customQuestions }: GameControllerProps) => {
           playerName={playerName}
           onResetRef={handleResetRef}
         />
+        </div>
 
         {isCompleted && (
           <GameResultScreen

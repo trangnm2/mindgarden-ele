@@ -39,3 +39,10 @@ export const BOT_VISIBILITY = {
   bot1: true,
   bot2: true,
 };
+
+export const SECTION_BACKGROUND = {
+  upperPC: false,
+  upperMB: false,
+  bottomPC: false,
+  bottomMB: false,
+};

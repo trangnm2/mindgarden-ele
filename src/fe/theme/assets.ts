@@ -10,6 +10,8 @@ import mobileFinishIcon from "./images/mobile/finish-icon.png";
 import mobileScoreIcon from "./images/mobile/score-icon.png";
 import mobileSubmitButton from "./images/mobile/submit-button.png";
 import mobileContinueButton from "./images/mobile/continue-button.png";
+import mobileUpperBg from "./images/mobile/75upper.png";
+import mobileBottomBg from "./images/mobile/25bottom.png";
 
 import pcBackground from "./images/desktop/background.png";
 import pcPlayer from "./images/desktop/player.png";
@@ -22,6 +24,8 @@ import pcFinishIcon from "./images/desktop/finish-icon.png";
 import pcScoreIcon from "./images/desktop/score-icon.png";
 import pcSubmitButton from "./images/desktop/submit-button.png";
 import pcContinueButton from "./images/desktop/continue-button.png";
+import pcUpperBg from "./images/desktop/75upper.png";
+import pcBottomBg from "./images/desktop/25bottom.png";
 
 export const ASSETS = {
   mobile: {
@@ -36,6 +40,8 @@ export const ASSETS = {
     scoreIcon: mobileScoreIcon,
     submitButton: mobileSubmitButton,
     continueButton: mobileContinueButton,
+    upperBg: mobileUpperBg,
+    bottomBg: mobileBottomBg,
   },
   desktop: {
     background: pcBackground,
@@ -49,6 +55,8 @@ export const ASSETS = {
     scoreIcon: pcScoreIcon,
     submitButton: pcSubmitButton,
     continueButton: pcContinueButton,
+    upperBg: pcUpperBg,
+    bottomBg: pcBottomBg,
   }
 };
 
