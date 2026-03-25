@@ -36,8 +36,8 @@ export const MARKER_POSITION = {
 };
 
 export const BOT_VISIBILITY = {
-  bot1: true,
-  bot2: true,
+  bot1: false,
+  bot2: false,
 };
 
 export const SECTION_BACKGROUND = {
