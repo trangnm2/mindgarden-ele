@@ -74,7 +74,7 @@
   left: 0;
   top: -50%;
   transform: translateY(-50%);
-  width: 10cqw;
+  width: 11.5cqw;
   height: auto;
   transition: left 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   z-index: 5;
