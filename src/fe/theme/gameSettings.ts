@@ -24,8 +24,8 @@ export const GAME_TEXTS = {
 };
 
 export const MARKER_VISIBILITY = {
-  startPC: true,
-  startMB: true,
+  startPC: false,
+  startMB: false,
   endPC: false,
   endMB: true,
 };
