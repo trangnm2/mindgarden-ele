@@ -20,8 +20,8 @@
 
 .question-text {
   position: absolute;
-  top: 15%;
-  bottom: 15%;
+  top: 20%;
+  bottom: 20%;
   left: 10%;
   right: 10%;
   z-index: 2;
@@ -37,6 +37,8 @@
   word-wrap: break-word;
   overflow-wrap: break-word;
   padding-right: 2%;
+  display: flex;
+  align-items: center;
 }
 
 .question-text::-webkit-scrollbar {
