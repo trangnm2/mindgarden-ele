@@ -129,21 +129,7 @@
 }
 
 .player-name {
-  position: absolute;
-  top: -35%;
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: hsl(30 100% 90%);
-  color: #000000;
-  font-size: clamp(12.3cqw, 14cqw, 17.2cqw);
-  font-weight: 700;
-  padding: 2.5cqw 8.6cqw;
-  border-radius: 4.9cqw;
-  white-space: nowrap;
-  z-index: 100;
-  box-shadow: 0 2.5cqw 4.9cqw rgba(0, 0, 0, 0.2);
-  border: 1.8cqw solid hsl(30 80% 65%);
-  pointer-events: none;
+  display: none;
 }
 
 body.is-mobile .race-section {
