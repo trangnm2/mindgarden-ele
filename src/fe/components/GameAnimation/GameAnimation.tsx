@@ -41,8 +41,9 @@ const GameAnimation = ({
     onResetRef?.(resetPositions);
   }, [onResetRef, resetPositions]);
 
-  // 6 slots: 5 flowers + 1 target bush
+  // 6 items total: 5 flowers + 1 bouquet, evenly spaced
   const totalSlots = totalQuestions + 1;
+  const getSlotPosition = (idx: number) => `${(idx / (totalSlots - 1)) * 100}%`;
 
   return (
     <section className="animation-section flower-row-section">
@@ -51,7 +52,7 @@ const GameAnimation = ({
         <div
           className={`flower-row-player${isJumping ? " flower-row-player-jump" : ""}`}
           style={{
-            left: `${(playerPosition / totalSlots) * 100}%`,
+            left: getSlotPosition(playerPosition),
           }}
         >
           <img src={assets.player} alt="Player" />
@@ -63,7 +64,7 @@ const GameAnimation = ({
             key={idx}
             className={`flower-slot${activatedFlowers[idx] ? " flower-activated" : " flower-dim"}`}
             style={{
-              left: `${(idx / totalSlots) * 100}%`,
+              left: getSlotPosition(idx),
             }}
           >
             <img src={flower.src} alt={flower.alt} />
@@ -71,11 +72,11 @@ const GameAnimation = ({
           </div>
         ))}
 
-        {/* Target Bush */}
+        {/* Target Bouquet */}
         <div
           className={`flower-slot flower-target${correctCount >= totalQuestions ? " flower-activated" : " flower-dim"}`}
           style={{
-            left: `${(totalQuestions / totalSlots) * 100}%`,
+            left: getSlotPosition(totalQuestions),
           }}
         >
           <img src={TARGET_BUSH.src} alt={TARGET_BUSH.alt} />
