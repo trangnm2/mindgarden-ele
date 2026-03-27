@@ -29,7 +29,8 @@
 .game-bottom-section {
   position: relative;
   z-index: 10;
-  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
 }
 
 .question-section {
