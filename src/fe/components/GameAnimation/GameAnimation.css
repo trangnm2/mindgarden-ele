@@ -1,15 +1,13 @@
-/* === Flower Row Section === */
-/* Safe zone: this section lives entirely in game-bottom-section (flex:1),
-   separated from answer-slots and submit/continue buttons in game-upper-section (flex:3).
-   We add top padding as a safe margin to prevent any overlap with buttons above. */
+/* === Flower Row Section — pinned to bottom of screen === */
 .flower-row-section {
   position: relative;
   z-index: 15;
   flex: 1;
   min-height: 0;
-  padding: 2cqw 4% 0;
+  padding: 0 4%;
   display: flex;
   align-items: flex-end;
+  justify-content: center;
   container-type: inline-size;
 }
 
@@ -18,15 +16,16 @@
   width: 60%;
   max-width: 900px;
   margin: 0 auto;
-  height: 85%;
+  height: 100%;
   display: flex;
   align-items: flex-end;
+  padding-bottom: 1cqw;
 }
 
 /* Player (mascot) — sized to fit centered within a flower pot */
 .flower-row-player {
   position: absolute;
-  bottom: 42%;
+  bottom: 35%;
   width: 10cqw;
   max-width: 120px;
   height: auto;
@@ -61,7 +60,7 @@
 /* Flower slots — constrained to not exceed track height */
 .flower-slot {
   position: absolute;
-  bottom: 5%;
+  bottom: 2%;
   width: 8cqw;
   max-width: 100px;
   height: auto;
@@ -117,7 +116,7 @@
 /* Mobile — safe margin from buttons above, proportioned for smaller screens */
 body.is-mobile .flower-row-section {
   min-height: 0;
-  padding: 2% 2% 0;
+  padding: 0 2%;
   align-items: flex-end;
   --ru: min(1vw, 0.5vh);
 }
