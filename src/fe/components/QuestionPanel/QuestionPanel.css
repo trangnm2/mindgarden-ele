@@ -22,26 +22,23 @@
 }
 
 .question-text {
-  position: absolute;
-  top: 20%;
-  bottom: 20%;
-  left: 10%;
-  right: 10%;
+  position: relative;
   z-index: 2;
+  width: 100%;
   font-size: max(2.7cqw, 3.7cqw);
   font-weight: 600;
   color: #000000;
-  text-align: justify;
-  text-align-last: left;
+  text-align: center;
   line-height: 1.4;
   box-sizing: border-box;
   overflow-x: visible;
   overflow-y: auto;
+  max-height: 25cqw;
   word-wrap: break-word;
   overflow-wrap: break-word;
-  padding-right: 2%;
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 .question-text::-webkit-scrollbar {
