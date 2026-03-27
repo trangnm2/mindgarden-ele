@@ -21,6 +21,17 @@
   overflow: visible;
 }
 
+.game-upper-section {
+  position: relative;
+  z-index: 30;
+}
+
+.game-bottom-section {
+  position: relative;
+  z-index: 10;
+  overflow: hidden;
+}
+
 .question-section {
   display: flex;
   flex-direction: column;
