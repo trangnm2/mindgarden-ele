@@ -1,9 +1,13 @@
+/* === Flower Row Section === */
+/* Safe zone: this section lives entirely in game-bottom-section (flex:1),
+   separated from answer-slots and submit/continue buttons in game-upper-section (flex:3).
+   We add top padding as a safe margin to prevent any overlap with buttons above. */
 .flower-row-section {
   position: relative;
   z-index: 15;
   flex: 1;
-  min-height: 20vh;
-  padding: 0 4%;
+  min-height: 0;
+  padding: 2cqw 4% 0;
   display: flex;
   align-items: flex-end;
   container-type: inline-size;
@@ -11,18 +15,20 @@
 
 .flower-row-track {
   position: relative;
-  width: 70%;
+  width: 60%;
+  max-width: 900px;
   margin: 0 auto;
-  height: 80%;
+  height: 85%;
   display: flex;
   align-items: flex-end;
 }
 
-/* Player (squirrel) */
+/* Player (mascot) — sized to fit centered within a flower pot */
 .flower-row-player {
   position: absolute;
-  bottom: 45%;
-  width: 13cqw;
+  bottom: 42%;
+  width: 10cqw;
+  max-width: 120px;
   height: auto;
   z-index: 20;
   transition: left 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -52,11 +58,12 @@
   100% { transform: translateX(-50%) translateY(0) scale(1); }
 }
 
-/* Flower slots */
+/* Flower slots — constrained to not exceed track height */
 .flower-slot {
   position: absolute;
   bottom: 5%;
-  width: 10cqw;
+  width: 8cqw;
+  max-width: 100px;
   height: auto;
   z-index: 10;
   transition: filter 0.5s ease, transform 0.3s ease;
@@ -64,7 +71,8 @@
 }
 
 .flower-slot.flower-target {
-  width: 14cqw;
+  width: 11cqw;
+  max-width: 140px;
 }
 
 .flower-slot img {
@@ -106,29 +114,33 @@
   50% { opacity: 1; transform: translateX(-50%) scale(1.15); }
 }
 
-/* Mobile */
+/* Mobile — safe margin from buttons above, proportioned for smaller screens */
 body.is-mobile .flower-row-section {
-  min-height: 20vh;
-  padding: 0 2%;
+  min-height: 0;
+  padding: 2% 2% 0;
   align-items: flex-end;
   --ru: min(1vw, 0.5vh);
 }
 
 body.is-mobile .flower-row-track {
+  width: 80%;
   height: 75%;
 }
 
 body.is-mobile .flower-row-player {
-  width: calc(18 * var(--ru));
-  bottom: 40%;
+  width: calc(14 * var(--ru));
+  max-width: none;
+  bottom: 38%;
 }
 
 body.is-mobile .flower-slot {
-  width: calc(14 * var(--ru));
+  width: calc(11 * var(--ru));
+  max-width: none;
 }
 
 body.is-mobile .flower-slot.flower-target {
-  width: calc(19 * var(--ru));
+  width: calc(15 * var(--ru));
+  max-width: none;
 }
 
 .player-name {
