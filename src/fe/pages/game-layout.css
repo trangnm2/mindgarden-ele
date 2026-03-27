@@ -84,5 +84,7 @@ body.is-mobile .game-main {
 body.is-mobile .question-section {
   max-width: 100%;
   height: 100%;
-  margin-top: -2%;
+  margin-top: 0;
+  gap: calc(1 * var(--qu));
+  overflow: hidden;
 }
