@@ -1,15 +1,13 @@
-/* === Flower Row Section === */
-/* Safe zone: this section lives entirely in game-bottom-section (flex:1),
-   separated from answer-slots and submit/continue buttons in game-upper-section (flex:3).
-   We add top padding as a safe margin to prevent any overlap with buttons above. */
+/* === Flower Row Section — pinned to bottom of screen === */
 .flower-row-section {
   position: relative;
   z-index: 15;
   flex: 1;
   min-height: 0;
-  padding: 2cqw 4% 0;
+  padding: 0 4%;
   display: flex;
   align-items: flex-end;
+  justify-content: center;
   container-type: inline-size;
 }
 
