@@ -60,7 +60,7 @@
 /* Flower slots — constrained to not exceed track height */
 .flower-slot {
   position: absolute;
-  bottom: 5%;
+  bottom: 2%;
   width: 8cqw;
   max-width: 100px;
   height: auto;
