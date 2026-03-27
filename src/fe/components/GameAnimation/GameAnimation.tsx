@@ -2,7 +2,7 @@
 import "./GameAnimation.css";
 import { useEffect } from "react";
 import { useGameAnimation, useDevice } from "@/fe/hooks";
-import { MARKER_VISIBILITY, MARKER_POSITION, BOT_VISIBILITY } from "@/fe/theme";
+import { FLOWER_ASSETS, TARGET_BUSH } from "@/fe/theme";
 
 export interface GameAnimationProps {
   totalQuestions: number;
@@ -23,11 +23,10 @@ const GameAnimation = ({
   playerName,
   onResetRef,
 }: GameAnimationProps) => {
-  const { assets, deviceType } = useDevice();
+  const { assets } = useDevice();
   const {
     playerPosition,
-    bot1Position,
-    bot2Position,
+    activatedFlowers,
     isJumping,
     resetPositions,
   } = useGameAnimation({
@@ -42,72 +41,45 @@ const GameAnimation = ({
     onResetRef?.(resetPositions);
   }, [onResetRef, resetPositions]);
 
-  const calculatePosition = (progress: number) => {
-    const maxLeft = deviceType === "mobile" ? 85 : 98;
-    const maxPosition = 5;
-    const clampedProgress = Math.max(0, Math.min(progress, maxPosition));
-    return (clampedProgress / maxPosition) * maxLeft;
-  };
+  // 6 slots: 5 flowers + 1 target bush
+  const totalSlots = totalQuestions + 1;
 
   return (
-    <section className="animation-section race-section">
-      <div className="animation-track race-track">
+    <section className="animation-section flower-row-section">
+      <div className="flower-row-track">
+        {/* Player (squirrel) */}
         <div
-          className="start-marker"
+          className={`flower-row-player${isJumping ? " flower-row-player-jump" : ""}`}
           style={{
-            visibility: ((deviceType === "mobile" && MARKER_VISIBILITY.startMB) || (deviceType !== "mobile" && MARKER_VISIBILITY.startPC)) ? "visible" : "hidden",
-            left: (deviceType === "mobile" ? MARKER_POSITION.startFrontMB : MARKER_POSITION.startFrontPC) ? (deviceType === "mobile" ? "12%" : "6%") : undefined,
+            left: `${(playerPosition / totalSlots) * 100}%`,
           }}
         >
-          <img src={assets.startIcon} alt="Start" />
+          <img src={assets.player} alt="Player" />
         </div>
-        <div className="race-lanes">
-          <div className="race-lane">
-            <div
-              className={`player user${isJumping.player ? " moving" : ""}`}
-              style={{
-                left: `${calculatePosition(playerPosition)}%`,
-                zIndex: 101,
-              }}
-            >
-              <span className="player-name" id="playerName">{playerName}</span>
-              <img src={assets.player} alt="Player" />
-            </div>
-          </div>
 
-          {BOT_VISIBILITY.bot1 && (
-          <div className="race-lane">
-            <div
-              className={`player bot1${isJumping.bot1 ? " moving" : ""}`}
-              style={{
-                left: `${calculatePosition(bot1Position)}%`,
-                zIndex: 102,
-              }}
-            >
-              <img src={assets.bot1} alt="Bot 1" />
-            </div>
+        {/* Flowers */}
+        {FLOWER_ASSETS.map((flower, idx) => (
+          <div
+            key={idx}
+            className={`flower-slot${activatedFlowers[idx] ? " flower-activated" : " flower-dim"}`}
+            style={{
+              left: `${(idx / totalSlots) * 100}%`,
+            }}
+          >
+            <img src={flower.src} alt={flower.alt} />
+            {activatedFlowers[idx] && <div className="flower-glow" />}
           </div>
-          )}
+        ))}
 
-          {BOT_VISIBILITY.bot2 && (
-          <div className="race-lane">
-            <div
-              className={`player bot2${isJumping.bot2 ? " moving" : ""}`}
-              style={{
-                left: `${calculatePosition(bot2Position)}%`,
-                zIndex: 103,
-              }}
-            >
-              <img src={assets.bot2} alt="Bot 2" />
-            </div>
-          </div>
-          )}
-        </div>
+        {/* Target Bush */}
         <div
-          className="finish-marker"
-          style={{ visibility: ((deviceType === "mobile" && MARKER_VISIBILITY.endMB) || (deviceType !== "mobile" && MARKER_VISIBILITY.endPC)) ? "visible" : "hidden" }}
+          className={`flower-slot flower-target${correctCount >= totalQuestions ? " flower-activated" : " flower-dim"}`}
+          style={{
+            left: `${(totalQuestions / totalSlots) * 100}%`,
+          }}
         >
-          <img src={assets.finishIcon} alt="Finish" />
+          <img src={TARGET_BUSH.src} alt={TARGET_BUSH.alt} />
+          {correctCount >= totalQuestions && <div className="flower-glow" />}
         </div>
       </div>
     </section>

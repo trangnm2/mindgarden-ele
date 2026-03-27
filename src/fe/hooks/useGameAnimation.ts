@@ -1,5 +1,5 @@
 // SUA KHI DOI GAME
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 
 interface UseGameAnimationOptions {
   totalQuestions: number;
@@ -16,80 +16,22 @@ export const useGameAnimation = ({
   currentResult,
   correctCount
 }: UseGameAnimationOptions) => {
-  const [bot1Position, setBot1Position] = useState(0);
-  const [bot2Position, setBot2Position] = useState(0);
-  const bot1PositionRef = useRef(bot1Position);
-  const bot2PositionRef = useRef(bot2Position);
-
-  useEffect(() => {
-    bot1PositionRef.current = bot1Position;
-    bot2PositionRef.current = bot2Position;
-  }, [bot1Position, bot2Position]);
-
-  const [movedBotThisTurn, setMovedBotThisTurn] = useState<number | null>(null);
-  const lastProcessedIndex = useRef<number>(-1);
-
-  useEffect(() => {
-    if (!hasSubmitted) {
-      setMovedBotThisTurn(null);
-    }
-  }, [hasSubmitted]);
-
-  useEffect(() => {
-    if (currentQuestionIndex === 0) {
-      setBot1Position(0);
-      setBot2Position(0);
-      lastProcessedIndex.current = -1;
-    }
-  }, [currentQuestionIndex]);
-
-  useEffect(() => {
-    if (hasSubmitted && lastProcessedIndex.current !== currentQuestionIndex) {
-      const botsAvailable: number[] = [];
-      if (bot1PositionRef.current < totalQuestions) botsAvailable.push(1);
-      if (bot2PositionRef.current < totalQuestions) botsAvailable.push(2);
-
-      let botToMove: number | null = null;
-
-      if (!currentResult?.isCorrect) {
-        if (botsAvailable.length > 0) {
-          botToMove = botsAvailable[Math.floor(Math.random() * botsAvailable.length)];
-        }
-      } else {
-        if (botsAvailable.length > 0 && Math.random() < 0.6) {
-          botToMove = botsAvailable[Math.floor(Math.random() * botsAvailable.length)];
-        }
-      }
-
-      if (botToMove === 1) {
-        setBot1Position(prev => Math.min(prev + 1, totalQuestions));
-      } else if (botToMove === 2) {
-        setBot2Position(prev => Math.min(prev + 1, totalQuestions));
-      }
-
-      setMovedBotThisTurn(botToMove);
-      lastProcessedIndex.current = currentQuestionIndex;
-    }
-  }, [hasSubmitted, currentResult, totalQuestions, currentQuestionIndex]);
-
-  const resetPositions = () => {
-    setBot1Position(0);
-    setBot2Position(0);
-    lastProcessedIndex.current = -1;
-  };
-
+  // Player position = number of correct answers (0 to totalQuestions)
   const playerPosition = correctCount;
 
-  const isJumping = {
-    player: hasSubmitted && currentResult?.isCorrect === true,
-    bot1: hasSubmitted && movedBotThisTurn === 1,
-    bot2: hasSubmitted && movedBotThisTurn === 2,
-  };
+  // Track which flowers are activated (indices 0-4)
+  // A flower at index i is activated if the player has passed it (correctCount > i)
+  const activatedFlowers = Array.from({ length: totalQuestions }, (_, i) => i < correctCount);
+
+  const isJumping = hasSubmitted && currentResult?.isCorrect === true;
+
+  const resetPositions = useCallback(() => {
+    // No internal state to reset since positions derive from correctCount
+  }, []);
 
   return {
     playerPosition,
-    bot1Position,
-    bot2Position,
+    activatedFlowers,
     isJumping,
     resetPositions,
   };
