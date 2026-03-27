@@ -7,15 +7,18 @@
 
 .question-container {
   position: relative;
-  width: 160%;
-  display: block;
+  width: 140%;
+  max-width: 95vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-image: var(--question-frame);
   background-size: 100% 100%;
   background-repeat: no-repeat;
-  aspect-ratio: 2.5 / 1;
+  min-height: 12cqw;
+  padding: 6% 10%;
   box-sizing: border-box;
   flex-shrink: 1;
-  min-height: 0;
 }
 
 .question-text {
