@@ -25,7 +25,7 @@
 /* Player (mascot) — sized to fit centered within a flower pot */
 .flower-row-player {
   position: absolute;
-  bottom: 42%;
+  bottom: 35%;
   width: 10cqw;
   max-width: 120px;
   height: auto;
