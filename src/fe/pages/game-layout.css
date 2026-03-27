@@ -42,9 +42,7 @@
   height: 100%;
   min-height: 0;
   margin-top: 1%;
-  gap: 1.5cqw;
   container-type: inline-size;
-  overflow: hidden;
 }
 
 .katex,
@@ -84,7 +82,5 @@ body.is-mobile .game-main {
 body.is-mobile .question-section {
   max-width: 100%;
   height: 100%;
-  margin-top: 0;
-  gap: calc(1 * var(--qu));
-  overflow: hidden;
+  margin-top: -2%;
 }
