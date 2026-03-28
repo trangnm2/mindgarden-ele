@@ -44,6 +44,7 @@ const GameAnimation = ({
   // 6 items total: 5 flowers + 1 bouquet, evenly spaced
   const totalSlots = totalQuestions + 1;
   const getSlotPosition = (idx: number) => `${(idx / (totalSlots - 1)) * 100}%`;
+  const getPlayerPosition = (idx: number) => `${(idx / (totalSlots - 1)) * 100 - 5}%`;
 
   return (
     <section className="animation-section flower-row-section">
@@ -52,7 +53,7 @@ const GameAnimation = ({
         <div
           className={`flower-row-player${isJumping ? " flower-row-player-jump" : ""}`}
           style={{
-            left: getSlotPosition(playerPosition),
+            left: getPlayerPosition(playerPosition),
           }}
         >
           <img src={assets.player} alt="Player" />
