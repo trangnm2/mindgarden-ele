@@ -53,7 +53,7 @@ const GameAnimation = ({
         <div
           className={`flower-row-player${isJumping ? " flower-row-player-jump" : ""}`}
           style={{
-            left: getSlotPosition(playerPosition),
+            left: getPlayerPosition(playerPosition),
           }}
         >
           <img src={assets.player} alt="Player" />
