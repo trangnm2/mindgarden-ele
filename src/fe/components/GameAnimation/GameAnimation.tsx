@@ -24,12 +24,7 @@ const GameAnimation = ({
   onResetRef,
 }: GameAnimationProps) => {
   const { assets } = useDevice();
-  const {
-    playerPosition,
-    activatedFlowers,
-    isJumping,
-    resetPositions,
-  } = useGameAnimation({
+  const { playerPosition, activatedFlowers, isJumping, resetPositions } = useGameAnimation({
     totalQuestions,
     currentQuestionIndex,
     hasSubmitted,
@@ -44,7 +39,7 @@ const GameAnimation = ({
   // 6 items total: 5 flowers + 1 bouquet, evenly spaced
   const totalSlots = totalQuestions + 1;
   const getSlotPosition = (idx: number) => `${(idx / (totalSlots - 1)) * 100}%`;
-  const getPlayerPosition = (idx: number) => `${(idx / (totalSlots - 1)) * 100 - 12}%`;
+  const getPlayerPosition = (idx: number) => `${(idx / (totalSlots - 1)) * 100 - 10}%`;
 
   return (
     <section className="animation-section flower-row-section">
