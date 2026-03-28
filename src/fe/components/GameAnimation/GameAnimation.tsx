@@ -44,7 +44,7 @@ const GameAnimation = ({
   // 6 items total: 5 flowers + 1 bouquet, evenly spaced
   const totalSlots = totalQuestions + 1;
   const getSlotPosition = (idx: number) => `${(idx / (totalSlots - 1)) * 100}%`;
-  const getPlayerPosition = (idx: number) => `${(idx / (totalSlots - 1)) * 100 - 5}%`;
+  const getPlayerPosition = (idx: number) => `${(idx / (totalSlots - 1)) * 100 - 7}%`;
 
   return (
     <section className="animation-section flower-row-section">
