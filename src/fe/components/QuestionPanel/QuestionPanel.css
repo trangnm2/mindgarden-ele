@@ -12,7 +12,7 @@
   background-image: var(--question-frame);
   background-size: 100% 100%;
   background-repeat: no-repeat;
-  aspect-ratio: 2.5 / 1.5;
+  aspect-ratio: 3 / 2.5;
   box-sizing: border-box;
   flex-shrink: 1;
   min-height: 0;
