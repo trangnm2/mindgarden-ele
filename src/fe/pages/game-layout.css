@@ -76,7 +76,7 @@ body.is-mobile .game-main {
   padding: 0 3%;
   flex: 1 1 0%;
   min-height: 0;
-  overflow: visible;
+  overflow: hidden;
 }
 
 body.is-mobile .question-section {
