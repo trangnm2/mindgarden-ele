@@ -33,7 +33,7 @@
 
 body.is-mobile .submit-btn {
   margin-top: 12%;
-  padding: calc(1 * var(--qu));
+  // padding: calc(1 * var(--qu));
   font-size: 0;
   line-height: 0;
   background: transparent;
