@@ -7,7 +7,7 @@
   width: 140%;
   margin-left: -18%;
   margin-right: -20%;
-  margin-top: -12%;
+  margin-top: -6%;
   flex-shrink: 1;
   min-height: 0;
 }
@@ -137,7 +137,7 @@ body.is-mobile .answers-grid {
   flex-direction: column;
   gap: calc(0.5 * var(--qu));
   width: 100%;
-  margin-top: -2%;
+  margin-top: 4%;
   padding: 0 6%;
   flex: 4;
   min-height: 0;
