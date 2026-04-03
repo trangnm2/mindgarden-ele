@@ -8,7 +8,6 @@
 .question-container {
   position: relative;
   width: 160%;
-  height: 90vh;
   display: block;
   background-image: var(--question-frame);
   background-size: 100% 100%;
