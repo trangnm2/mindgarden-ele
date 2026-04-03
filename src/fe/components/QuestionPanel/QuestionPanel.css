@@ -21,8 +21,8 @@
 .question-text {
   position: absolute;
   top: 45%;
-  bottom: 15%;
-  left: 17%;
+  bottom: 5%;
+  left: 15%;
   right: 15%;
   z-index: 2;
   font-size: max(2.7cqw, 3.7cqw);
