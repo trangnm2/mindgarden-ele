@@ -1,5 +1,5 @@
 .submit-btn {
-  margin-top: 4cqw;
+  /*margin-top: 4cqw;
   background: transparent;
   border: none;
   cursor: pointer;
@@ -8,6 +8,28 @@
   line-height: 0;
   transition: all 0.2s ease;
   position: relative;
+  z-index: 20;*/
+  /* Đổi từ relative sang absolute */
+  position: absolute;
+
+  /* Gắn chặt nút vào cạnh dưới cùng của màn hình / container, cách đáy một khoảng an toàn */
+  bottom: 5%; /* Điều chỉnh phần trăm này để nút lên cao hoặc xuống thấp theo ý muốn */
+
+  /* Căn giữa nút theo chiều ngang */
+  left: 50%;
+  transform: translateX(-50%);
+
+  /* Bỏ margin-top đi vì không cần nữa */
+  /* margin-top: 4cqw; */
+
+  /* Các thuộc tính cũ của bạn giữ nguyên */
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 1cqw;
+  font-size: 0;
+  line-height: 0;
+  transition: all 0.2s ease;
   z-index: 20;
 }
 
