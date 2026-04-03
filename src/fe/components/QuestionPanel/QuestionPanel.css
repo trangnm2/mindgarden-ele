@@ -8,9 +8,10 @@
 .question-container {
   position: relative;
   width: 160%;
+  height: 30vh;
   display: block;
   background-image: var(--question-frame);
-  background-size: 100% 130%;
+  background-size: 100% 100%;
   background-repeat: no-repeat;
   aspect-ratio: 3 / 5;
   box-sizing: border-box;
