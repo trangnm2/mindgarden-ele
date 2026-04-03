@@ -135,10 +135,11 @@
 body.is-mobile .answers-grid {
   display: flex;
   flex-direction: column;
-  gap: calc(0.5 * var(--qu));
+  /* gap: calc(0.5 * var(--qu));*/
+  gap: 2vh;
   width: 100%;
-  margin-top: -10vh;
-  padding: 0 6%;
+  margin-top: 3vh;
+  padding: 0 5%;
   flex: 4;
   min-height: 0;
 }
