@@ -10,7 +10,7 @@
   width: 170%;
   display: block;
   background-image: var(--question-frame);
-  background-size: 100% 110%;
+  background-size: 100% 100%;
   background-repeat: no-repeat;
   aspect-ratio: 16 / 9;
   box-sizing: border-box;
