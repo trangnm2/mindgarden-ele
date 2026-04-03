@@ -141,13 +141,13 @@ body.is-mobile .answers-grid {
   padding: 0 6%;
   flex: 4;
   min-height: 0;
-  container-type: size;
 }
 
 body.is-mobile .answer-container {
   flex: 1 1 0;
-  min-height: 0;
+  min-height: 5vh;
   display: flex;
+  flex: none;
   align-items: center;
   gap: 3%;
   background-color: hsl(30 100% 90%);
