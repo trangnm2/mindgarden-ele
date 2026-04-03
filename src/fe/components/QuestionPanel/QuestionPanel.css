@@ -94,7 +94,7 @@
 
 body.is-mobile .question-container {
   background-image: var(--question-frame);
-  background-size: 100% 100%;
+  background-size: 100% 130%;
   background-repeat: no-repeat;
   padding: 10% 12%;
   width: 100%;
