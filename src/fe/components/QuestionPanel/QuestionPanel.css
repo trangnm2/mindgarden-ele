@@ -103,8 +103,8 @@ body.is-mobile .question-container {
   border: none;
   border-image: none;
   aspect-ratio: 16/12;
-  flex: 2;
-  min-height: 0;
+  flex-shrink: 0;
+  min-height: 50vh;
   postion: relative;
 }
 
