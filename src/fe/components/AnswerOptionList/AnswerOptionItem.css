@@ -17,6 +17,7 @@
 }
 
 .answer-container {
+  top: 20%;
   position: relative;
   cursor: pointer;
   height: 100%;
