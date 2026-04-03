@@ -106,6 +106,7 @@ body.is-mobile .question-container {
   flex: 2;
   min-height: 0;
   postion: relative;
+  top: 10%;
 }
 
 body.is-mobile .question-text {
