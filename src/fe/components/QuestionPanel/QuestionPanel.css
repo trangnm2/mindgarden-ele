@@ -17,6 +17,7 @@
   box-sizing: border-box;
   flex-shrink: 0;
   min-height: 30vh;
+  margin-bottom: -10vh;
 }
 
 .question-text {
