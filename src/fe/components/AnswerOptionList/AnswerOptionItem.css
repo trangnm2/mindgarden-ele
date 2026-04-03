@@ -203,7 +203,7 @@ body.is-mobile .answer-container.wrong.selected {
   body.is-mobile .answer-container div {
     /* Nới lỏng giới hạn clamp: 
            Mức tối thiểu là 18px, mức linh hoạt là 3vw, mức tối đa là 30px (hoặc to hơn tùy bạn) */
-    font-size: clamp(18px, 3vw, 30px) !important;
+    font-size: clamp(14px, 3vw, 30px) !important;
 
     /* Ghi chú: Nếu bạn đang dùng biến --qu, bạn có thể thử dòng dưới đây thay cho clamp:
            font-size: calc(4 * var(--qu)) !important; 
