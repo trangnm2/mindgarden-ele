@@ -106,12 +106,11 @@ body.is-mobile .question-container {
   flex: 2;
   min-height: 0;
   postion: relative;
-  top: 10%;
 }
 
 body.is-mobile .question-text {
   position: absolute;
-  top: 20%;
+  top: 30%;
   bottom: 20%;
   left: 12%;
   right: 13%;
