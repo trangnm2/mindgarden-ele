@@ -8,7 +8,6 @@
 .question-container {
   position: relative;
   top: -10%;
-  bottom: -20%;
   width: 170%;
   display: block;
   background-image: var(--question-frame);
@@ -23,7 +22,7 @@
 .question-text {
   position: absolute;
   top: 35%;
-  bottom: 25%;
+  bottom: 45%;
   left: 15%;
   right: 15%;
   z-index: 2;
