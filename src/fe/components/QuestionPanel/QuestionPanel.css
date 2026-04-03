@@ -21,7 +21,7 @@
 .question-text {
   position: absolute;
   top: 45%;
-  bottom: 5%;
+  bottom: 15%;
   left: 15%;
   right: 15%;
   z-index: 2;
