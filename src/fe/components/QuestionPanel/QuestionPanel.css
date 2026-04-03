@@ -112,7 +112,7 @@ body.is-mobile .question-container {
 body.is-mobile .question-text {
   position: absolute;
   top: 20%;
-  bottom: 20%;
+  bottom: 30%;
   left: 12%;
   right: 13%;
   font-size: calc(3.5 * var(--qu));
