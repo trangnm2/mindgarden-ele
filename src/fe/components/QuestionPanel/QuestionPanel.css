@@ -8,7 +8,7 @@
 .question-container {
   position: relative;
   top: -10%;
-  bottom: 20%;
+  bottom: -20%;
   width: 170%;
   display: block;
   background-image: var(--question-frame);
