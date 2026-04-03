@@ -13,7 +13,7 @@
   position: absolute;
 
   /* Gắn chặt nút vào cạnh dưới cùng của màn hình / container, cách đáy một khoảng an toàn */
-  bottom: 5%; /* Điều chỉnh phần trăm này để nút lên cao hoặc xuống thấp theo ý muốn */
+  bottom: 40%; /* Điều chỉnh phần trăm này để nút lên cao hoặc xuống thấp theo ý muốn */
 
   /* Căn giữa nút theo chiều ngang */
   left: 50%;
