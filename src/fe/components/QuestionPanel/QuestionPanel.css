@@ -14,8 +14,8 @@
   background-repeat: no-repeat;
   aspect-ratio: 16 / 12;
   box-sizing: border-box;
-  flex-shrink: 1;
-  min-height: 0;
+  flex-shrink: 0;
+  min-height: 50vh;
 }
 
 .question-text {
