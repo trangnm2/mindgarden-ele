@@ -105,6 +105,7 @@ body.is-mobile .question-container {
   aspect-ratio: unset;
   flex: 2;
   min-height: 0;
+  postion: relative;
 }
 
 body.is-mobile .question-text {
