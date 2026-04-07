@@ -1,12 +1,12 @@
 .score-container {
   display: flex;
-  gap: max(0.9cqw, 1.5cqw);
+  gap: clamp(1vh, calc(var(--ar-scale, 1) * 1.5vh), 2vh);
   justify-content: center;
   align-items: flex-end;
 }
 
 .score-item {
-  width: max(3.1cqw, 3cqw);
+  width: clamp(4vh, calc(var(--ar-scale, 1) * 5vh), 6.5vh);
   height: auto;
   transition: all 0.4s ease;
   filter: grayscale(70%) brightness(0.5);
@@ -21,7 +21,7 @@
 }
 
 .score-item.active {
-  filter: grayscale(0%) brightness(1.2) drop-shadow(0 0 1cqw rgba(255, 215, 0, 1)) drop-shadow(0 0 2cqw rgba(255, 165, 0, 0.8));
+  filter: grayscale(0%) brightness(1.2) drop-shadow(0 0 0.7vh rgba(255, 215, 0, 1)) drop-shadow(0 0 1.5vh rgba(255, 165, 0, 0.8));
   transform: scale(1.1);
   opacity: 1;
   animation: scoreSwing 1.5s ease-in-out infinite;
@@ -40,6 +40,7 @@
 }
 
 @keyframes scoreSwing {
+
   0%,
   100% {
     transform: scale(1.1) rotate(-8deg);
@@ -51,9 +52,9 @@
 }
 
 body.is-mobile .score-container {
-  gap: calc(3 * var(--qu));
+  gap: min(calc(3 * var(--qu)), 2vh);
 }
 
 body.is-mobile .score-item {
-  width: calc(8 * var(--qu));
+  width: min(calc(8 * var(--qu)), 4.5vh);
 }

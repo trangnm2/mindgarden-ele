@@ -2,21 +2,25 @@
 import { useState, useCallback, useMemo, useEffect } from "react";
 import { useQuizAPI } from "./useQuizAPI";
 import { sampleQuestions } from "@/fe/theme/mockQuestions";
-import { FIXED_TOTAL_QUESTIONS } from "@/fe/theme";
 import { QuizAnswer } from "@/be/types";
 
 interface UseQuizStateOptions {
   onAnswerCorrect?: (data: { currentQuestionIndex: number }) => void;
   onAnswerIncorrect?: () => void;
   customQuestions?: any[] | null;
+  totalQuestions?: number;
+  useSampleData?: boolean;
 }
 
 export function useQuizState(options: UseQuizStateOptions = {}) {
   const { onAnswerCorrect, onAnswerIncorrect, customQuestions } = options;
+  const FIXED_TOTAL_QUESTIONS = options.totalQuestions ?? 5;
+  const USE_SAMPLE_DATA = options.useSampleData ?? false;
 
   const isSampleMode = useMemo(() => {
     if (typeof window !== 'undefined') {
       const urlParams = new URLSearchParams(window.location.search);
+      if (!window.location.search || window.location.search === '?') return USE_SAMPLE_DATA;
       return urlParams.get('sample') === 'true';
     }
     return false;

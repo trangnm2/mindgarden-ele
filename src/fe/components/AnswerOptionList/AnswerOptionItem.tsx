@@ -1,4 +1,5 @@
 // KHONG SUA KHI DOI GAME
+import { useRef, useEffect } from "react";
 import "./AnswerOptionItem.css";
 import HtmlContentRenderer from "@/fe/components/ContentRenderer/HtmlContentRenderer";
 
@@ -41,6 +42,58 @@ const AnswerOptionItem = ({
     return classes;
   };
 
+  const MAX_VISIBLE_LINES = 3;
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+    let rafId: number | null = null;
+
+    const measureAndCap = () => {
+      rafId = null;
+      const isMobile = document.body.classList.contains('is-mobile');
+
+      if (isMobile) {
+        if (el.scrollHeight > el.clientHeight + 2) {
+          el.classList.remove('centered');
+        } else {
+          el.classList.add('centered');
+        }
+      } else {
+        el.style.maxHeight = '';
+        el.style.overflowY = '';
+        void el.offsetHeight;
+
+        const style = getComputedStyle(el);
+        const lineHeight = parseFloat(style.lineHeight) || parseFloat(style.fontSize) * 1.2;
+        const capHeight = Math.ceil(lineHeight * MAX_VISIBLE_LINES);
+
+        if (el.scrollHeight > capHeight + 2) {
+          el.style.maxHeight = `${capHeight}px`;
+          el.style.overflowY = 'auto';
+        }
+      }
+    };
+
+    const schedule = () => {
+      if (rafId !== null) return;
+      rafId = requestAnimationFrame(measureAndCap);
+    };
+
+    schedule();
+
+    const mo = new MutationObserver(schedule);
+    mo.observe(el, { childList: true, subtree: true, characterData: true });
+    window.addEventListener('resize', schedule);
+
+    return () => {
+      if (rafId !== null) cancelAnimationFrame(rafId);
+      mo.disconnect();
+      window.removeEventListener('resize', schedule);
+    };
+  }, [answer]);
+
   const labels = ["A", "B", "C", "D"];
 
   return (
@@ -53,7 +106,9 @@ const AnswerOptionItem = ({
         {labels[index] ?? index + 1}
       </span>
       <div className="answer-text">
-        <HtmlContentRenderer html={answer} />
+        <div className="answer-text-scroll" ref={scrollRef}>
+          <HtmlContentRenderer html={answer} />
+        </div>
       </div>
     </div>
   );

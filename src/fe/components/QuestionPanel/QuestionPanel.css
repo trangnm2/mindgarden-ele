@@ -1,31 +1,23 @@
-.question-box {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 .question-container {
   position: relative;
-  width: 170%;
+  width: 150%;
   display: block;
   background-image: var(--question-frame);
   background-size: 100% 100%;
   background-repeat: no-repeat;
-  aspect-ratio: 16 / 9;
   box-sizing: border-box;
-  flex-shrink: 0;
-  min-height: 30vh;
+  flex: 2.5 1 0%;
+  min-height: 0;
 }
 
 .question-text {
   position: absolute;
-  top: 35%;
-  bottom: 35%;
-  left: 15%;
-  right: 15%;
+  top: 23%;
+  bottom: 23%;
+  left: 13%;
+  right: 11%;
   z-index: 2;
-  font-size: max(2.7cqw, 3.7cqw);
+  font-size: clamp(1.2vh, calc(var(--ar-scale, 1) * 1.8vh), 3vh);
   font-weight: 600;
   color: #000000;
   text-align: justify;
@@ -36,9 +28,7 @@
   overflow-y: auto;
   word-wrap: break-word;
   overflow-wrap: break-word;
-  padding-right: 2%;
-  display: flex;
-  justify-content: center;
+  padding: 0.3em 2% 0 0;
 }
 
 .question-text::-webkit-scrollbar {
@@ -67,13 +57,14 @@
 }
 
 .question-text .katex {
-  font-size: max(3.1cqw, 3.7cqw);
+  font-size: clamp(1.4vh, calc(var(--ar-scale, 1) * 2vh), 3.4vh);
 }
 
 .question-text p {
-  margin: auto 0;
+  margin: 0;
   padding: 0;
-  text-align: justify;
+  text-align: inherit;
+  text-align-last: inherit;
 }
 
 .question-text img {
@@ -94,7 +85,7 @@
 
 body.is-mobile .question-container {
   background-image: var(--question-frame);
-  background-size: 100% 115%;
+  background-size: 100% 100%;
   background-repeat: no-repeat;
   padding: 10% 12%;
   width: 100%;
@@ -110,19 +101,20 @@ body.is-mobile .question-container {
 body.is-mobile .question-text {
   position: absolute;
   top: 20%;
-  bottom: 10%;
+  bottom: 20%;
   left: 12%;
   right: 13%;
-  font-size: calc(3.5 * var(--qu));
+  font-size: clamp(1.8vh, calc(var(--ar-scale, 1) * 2.2vh), 2.8vh);
   color: #4a2c00;
   text-align: justify;
   text-align-last: left;
   overflow-y: auto;
   overflow-x: visible;
+  padding-top: 0.3em;
 }
 
 body.is-mobile .question-text .katex {
-  font-size: calc(4.5 * var(--qu));
+  font-size: clamp(2vh, calc(var(--ar-scale, 1) * 2.5vh), 3vh);
 }
 
 body.is-mobile .question-text .katex .msupsub,

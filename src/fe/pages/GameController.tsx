@@ -1,10 +1,9 @@
-// KHONG SUA KHI DOI GAME
 import "./game-layout.css";
 import { useEffect, useRef, useCallback, type CSSProperties } from "react";
 import { useDevice } from "@/fe/hooks";
 import { useQuizState, useAudioController, QuizAnswer } from "@/be";
-import { GAME_TEXTS, SECTION_BACKGROUND } from "@/fe/theme";
 import { resolvePlayerName } from "@/fe/hooks";
+import { useVariant } from "@/fe/context/VariantContext";
 import {
   ScoreIndicator,
   QuestionPanel,
@@ -20,6 +19,8 @@ interface GameControllerProps {
 
 const GameController = ({ customQuestions }: GameControllerProps) => {
   const { assets, deviceType } = useDevice();
+  const { config } = useVariant();
+  const { GAME_TEXTS, SECTION_BACKGROUND } = config.settings;
   const { playButtonClick, playCorrectAnswer, playWrongAnswer, playFinishGame } = useAudioController();
   const animationResetRef = useRef<(() => void) | null>(null);
 
@@ -48,8 +49,24 @@ const GameController = ({ customQuestions }: GameControllerProps) => {
     onAnswerIncorrect: () => {
       playWrongAnswer();
     },
-    customQuestions
+    customQuestions,
+    totalQuestions: config.settings.FIXED_TOTAL_QUESTIONS,
+    useSampleData: config.settings.USE_SAMPLE_DATA,
   });
+
+  useEffect(() => {
+    const updateArScale = () => {
+      const ratio = window.innerHeight / window.innerWidth;
+      const isPortrait = ratio > 1;
+      const scale = isPortrait
+        ? Math.max(0.75, Math.min(1.5, 0.8 + ratio * 0.2))
+        : Math.max(0.75, Math.min(1.5, 0.9 + ratio * 0.8));
+      document.documentElement.style.setProperty('--ar-scale', scale.toString());
+    };
+    updateArScale();
+    window.addEventListener('resize', updateArScale);
+    return () => window.removeEventListener('resize', updateArScale);
+  }, []);
 
   useEffect(() => {
     if (isCompleted) {
@@ -99,7 +116,7 @@ const GameController = ({ customQuestions }: GameControllerProps) => {
     );
   }
 
-  const playerName = resolvePlayerName(username);
+  const playerName = resolvePlayerName(username, GAME_TEXTS.playerDefaultName);
   const gameContainerStyle = {
     ["--game-background" as string]: `url(${assets.background})`,
   } as CSSProperties;
@@ -174,7 +191,7 @@ const GameController = ({ customQuestions }: GameControllerProps) => {
               })}
             </div>
 
-            <div className="flex justify-center mt-0 w-full">
+            <div className="flex justify-center w-full">
               <SubmitButton
                 isAnswered={hasSubmitted}
                 isDisabled={isCompleted || ((!selectedAnswer && !hasSubmitted) || isSubmitting)}

@@ -1,6 +1,6 @@
 // KHONG SUA KHI DOI GAME
 import "./GameResultScreen.css";
-import { GAME_TEXTS } from "@/fe/theme";
+import { useVariant } from "@/fe/context/VariantContext";
 import { useDevice } from "@/fe/hooks";
 
 interface GameResultScreenProps {
@@ -11,6 +11,8 @@ interface GameResultScreenProps {
 
 const GameResultScreen = ({ score, totalQuestions, onRestart }: GameResultScreenProps) => {
   const { assets } = useDevice();
+  const { config } = useVariant();
+  const { GAME_TEXTS } = config.settings;
   const isWinner = score >= totalQuestions;
 
   return (
