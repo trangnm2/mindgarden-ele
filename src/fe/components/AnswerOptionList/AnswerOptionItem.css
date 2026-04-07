@@ -92,15 +92,22 @@
 .answer-text-scroll::-webkit-scrollbar-track {
   background: rgba(139, 69, 19, 0.1);
   border-radius: 0.5cqw;
+  border-top: 0.6em solid transparent;
+  border-bottom: 0.6em solid transparent;
+  background-clip: content-box;
 }
 
 .answer-text-scroll::-webkit-scrollbar-thumb {
   background: rgba(139, 69, 19, 0.4);
   border-radius: 0.5cqw;
+  border-top: 0.6em solid transparent;
+  border-bottom: 0.6em solid transparent;
+  background-clip: content-box;
 }
 
 .answer-text-scroll::-webkit-scrollbar-thumb:hover {
   background: rgba(139, 69, 19, 0.6);
+  background-clip: content-box;
 }
 
 .answer-text p {
@@ -252,4 +259,16 @@ body.is-mobile .answer-container.correct {
 body.is-mobile .answer-container.wrong.selected {
   border: calc(0.4 * var(--qu)) solid #ff3b30;
   background-color: #ffcfcc;
+}
+
+body.is-mobile .answer-text-scroll::-webkit-scrollbar-track {
+  border-top: 0.3em solid transparent;
+  border-bottom: 0.3em solid transparent;
+  background-clip: content-box;
+}
+
+body.is-mobile .answer-text-scroll::-webkit-scrollbar-thumb {
+  border-top: 0.3em solid transparent;
+  border-bottom: 0.3em solid transparent;
+  background-clip: content-box;
 }
