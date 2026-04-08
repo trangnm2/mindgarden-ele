@@ -86,8 +86,7 @@ const AnswerOptionItem = ({
 
         container.style.maxHeight = `${Math.max(targetH, labelH) + padTop + padBot}px`;
 
-        // Short content: hide scrollbar; long content: allow scroll
-        el.style.overflowY = naturalHeight <= capHeight + 2 ? 'hidden' : 'auto';
+        el.style.overflowY = 'auto';
       } else {
         // PC: content-sized box, cap at 3 lines
         void el.offsetHeight;
