@@ -232,13 +232,13 @@ body.is-mobile .answer-container {
 body.is-mobile .answer-label {
   align-self: center;
   width: min(calc(6.5 * var(--qu)), 12cqh);
-  height: min(calc(12 * var(--qu)), 15cqh);
-  font-size: clamp(2vh, calc(var(--ar-scale, 1) * 2.5vh), 3vh);
+  height: min(calc(6.5 * var(--qu)), 12cqh);
+  font-size: clamp(2vh, calc(var(--ar-scale, 1) * 2.5vh), min(3vh, 4.8vw));
   flex-shrink: 0;
 }
 
 body.is-mobile .answer-text {
-  font-size: clamp(1.6vh, calc(var(--ar-scale, 1) * 2vh), 2.6vh);
+  font-size: clamp(1.6vh, calc(var(--ar-scale, 1) * 2vh), min(2.6vh, 4vw));
   color: #4a2c00;
   text-align: justify;
   text-align-last: left;
@@ -268,7 +268,7 @@ body.is-mobile .answer-text-scroll::after {
 }
 
 body.is-mobile .answer-text .katex {
-  font-size: clamp(2vh, calc(var(--ar-scale, 1) * 2.5vh), 3vh);
+  font-size: clamp(2vh, calc(var(--ar-scale, 1) * 2.5vh), min(3vh, 5vw));
 }
 
 body.is-mobile .answer-text .katex .msupsub,
