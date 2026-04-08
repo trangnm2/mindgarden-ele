@@ -54,6 +54,10 @@ const AnswerOptionItem = ({
       rafId = null;
       const isMobile = document.body.classList.contains('is-mobile');
 
+      // Luôn xoá inline styles cũ trước để tránh stale từ nhánh PC
+      el.style.maxHeight = '';
+      el.style.overflowY = '';
+
       if (isMobile) {
         if (el.scrollHeight > el.clientHeight + 2) {
           el.classList.remove('centered');
@@ -61,8 +65,7 @@ const AnswerOptionItem = ({
           el.classList.add('centered');
         }
       } else {
-        el.style.maxHeight = '';
-        el.style.overflowY = '';
+        // PC: content-sized box, cap at 3 lines
         void el.offsetHeight;
 
         const style = getComputedStyle(el);
@@ -87,9 +90,14 @@ const AnswerOptionItem = ({
     mo.observe(el, { childList: true, subtree: true, characterData: true });
     window.addEventListener('resize', schedule);
 
+    // Watch body class changes (is-mobile toggle) để re-run khi device type chuyển
+    const bodyMo = new MutationObserver(schedule);
+    bodyMo.observe(document.body, { attributes: true, attributeFilter: ['class'] });
+
     return () => {
       if (rafId !== null) cancelAnimationFrame(rafId);
       mo.disconnect();
+      bodyMo.disconnect();
       window.removeEventListener('resize', schedule);
     };
   }, [answer]);
