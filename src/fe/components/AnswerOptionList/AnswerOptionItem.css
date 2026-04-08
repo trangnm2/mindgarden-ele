@@ -256,6 +256,7 @@ body.is-mobile .answer-text-scroll {
   overflow-x: hidden;
   overflow-y: auto;
   padding: 0.3em 2% 0 0;
+  margin: 0;
   display: flex;
   flex-direction: column;
 }
