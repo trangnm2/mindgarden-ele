@@ -54,14 +54,14 @@ const AnswerOptionItem = ({
       rafId = null;
       const isMobile = document.body.classList.contains('is-mobile');
 
-      // Luôn xoá inline styles cũ trước để tránh stale từ nhánh PC
+      // Luôn xoá inline styles cũ trước để tránh stale khi chuyển device type
       el.style.maxHeight = '';
       el.style.overflowY = '';
+      const container = el.closest('.answer-container') as HTMLElement;
+      if (container) container.style.maxHeight = '';
 
       if (isMobile) {
-        const container = el.closest('.answer-container') as HTMLElement;
         if (!container) return;
-        container.style.maxHeight = '';
 
         // Temporarily static to measure natural content height (no spacers)
         el.style.position = 'static';
