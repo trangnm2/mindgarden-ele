@@ -59,11 +59,7 @@ const AnswerOptionItem = ({
       el.style.overflowY = '';
 
       if (isMobile) {
-        if (el.scrollHeight > el.clientHeight + 2) {
-          el.classList.remove('centered');
-        } else {
-          el.classList.add('centered');
-        }
+        // Mobile: centering handled by CSS flex spacers (::before/::after)
       } else {
         // PC: content-sized box, cap at 3 lines
         void el.offsetHeight;
