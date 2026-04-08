@@ -59,7 +59,35 @@ const AnswerOptionItem = ({
       el.style.overflowY = '';
 
       if (isMobile) {
-        // Mobile: centering handled by CSS flex spacers (::before/::after)
+        const container = el.closest('.answer-container') as HTMLElement;
+        if (!container) return;
+        container.style.maxHeight = '';
+
+        // Temporarily static to measure natural content height (no spacers)
+        el.style.position = 'static';
+        el.style.display = 'block';
+        void el.offsetHeight;
+
+        const style = getComputedStyle(el);
+        const lineHeight = parseFloat(style.lineHeight) || parseFloat(style.fontSize) * 1.2;
+        const capHeight = Math.ceil(lineHeight * MAX_VISIBLE_LINES);
+        const naturalHeight = el.scrollHeight;
+
+        // Restore CSS
+        el.style.position = '';
+        el.style.display = '';
+
+        const targetH = Math.min(naturalHeight, capHeight);
+        const cs = getComputedStyle(container);
+        const padTop = parseFloat(cs.paddingTop) || 0;
+        const padBot = parseFloat(cs.paddingBottom) || 0;
+        const label = container.querySelector('.answer-label') as HTMLElement;
+        const labelH = label ? label.offsetHeight : 0;
+
+        container.style.maxHeight = `${Math.max(targetH, labelH) + padTop + padBot}px`;
+
+        // Short content: hide scrollbar; long content: allow scroll
+        el.style.overflowY = naturalHeight <= capHeight + 2 ? 'hidden' : 'auto';
       } else {
         // PC: content-sized box, cap at 3 lines
         void el.offsetHeight;
