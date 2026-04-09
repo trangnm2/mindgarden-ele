@@ -54,6 +54,7 @@
 .answer-text {
   position: relative;
   z-index: 2;
+  font-family: 'Nunito', system-ui, sans-serif;
   font-size: clamp(1.2vh, calc(var(--ar-scale, 1) * 1.6vh), 2.8vh);
   font-weight: 600;
   color: #000000;
